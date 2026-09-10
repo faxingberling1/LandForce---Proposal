@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBudgetCalculator();
   initPrintButton();
   initHeroPdfViewer();
+  initCaseStudiesToggle();
 });
 
 /* --------------------------------------------------------------------------
@@ -105,6 +106,68 @@ function initAccordions() {
       parentItem.classList.toggle('active', !wasActive);
     });
   });
+}
+
+/* --------------------------------------------------------------------------
+   2B. CASE STUDIES COLLAPSE / EXPAND TOGGLE
+   -------------------------------------------------------------------------- */
+function initCaseStudiesToggle() {
+  const caseCards = document.querySelectorAll('.featured-case-card');
+  const toggleAllBtn = document.getElementById('btnToggleAllCases');
+
+  caseCards.forEach(card => {
+    const header = card.querySelector('.featured-case-header');
+    if (!header) return;
+
+    header.addEventListener('click', (e) => {
+      // Toggle collapsed state
+      const isCollapsed = card.classList.toggle('is-collapsed');
+      header.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+      
+      const toggleText = card.querySelector('.case-toggle-text');
+      if (toggleText) {
+        toggleText.textContent = isCollapsed ? 'Expand Case Study' : 'Collapse Case Study';
+      }
+
+      updateToggleAllBtn();
+    });
+
+    // Keyboard accessibility
+    header.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        header.click();
+      }
+    });
+  });
+
+  function updateToggleAllBtn() {
+    if (!toggleAllBtn) return;
+    const allCollapsed = Array.from(caseCards).every(c => c.classList.contains('is-collapsed'));
+    toggleAllBtn.innerHTML = allCollapsed 
+      ? `<span>Expand All Case Studies</span> <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>`
+      : `<span>Collapse All Case Studies</span> <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6-6"/></svg>`;
+  }
+
+  if (toggleAllBtn) {
+    toggleAllBtn.addEventListener('click', () => {
+      const anyOpen = Array.from(caseCards).some(c => !c.classList.contains('is-collapsed'));
+      caseCards.forEach(card => {
+        const header = card.querySelector('.featured-case-header');
+        const toggleText = card.querySelector('.case-toggle-text');
+        if (anyOpen) {
+          card.classList.add('is-collapsed');
+          if (header) header.setAttribute('aria-expanded', 'false');
+          if (toggleText) toggleText.textContent = 'Expand Case Study';
+        } else {
+          card.classList.remove('is-collapsed');
+          if (header) header.setAttribute('aria-expanded', 'true');
+          if (toggleText) toggleText.textContent = 'Collapse Case Study';
+        }
+      });
+      updateToggleAllBtn();
+    });
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -488,12 +551,12 @@ const mockupAssetsData = {
               <div class="msc-col">
                 <div class="msc-icon">👷</div>
                 <strong>Crew Member Dignity</strong>
-                <p>Crew members are presented as skilled, certified environmental practitioners and tradespeople—not "charity cases." All uniform branding reinforces professional pride.</p>
+                <p>Crew members are presented as skilled, certified environmental practitioners and tradespeople, not "charity cases." All uniform branding reinforces professional pride.</p>
               </div>
               <div class="msc-col">
                 <div class="msc-icon">🦺</div>
                 <strong>Role Distinction Without Division</strong>
-                <p>Field crews wear Landforce high-vis safety gear, while Mill staff wear durable artisanal shop aprons branded "The Mill by Landforce"—unifying both divisions under one mission.</p>
+                <p>Field crews wear Landforce high-vis safety gear, while Mill staff wear durable artisanal shop aprons branded "The Mill by Landforce", unifying both divisions under one mission.</p>
               </div>
               <div class="msc-col">
                 <div class="msc-icon">📜</div>
@@ -1420,7 +1483,7 @@ function initHeroPdfViewer() {
   // Fullscreen Modal Open
   expandBtn?.addEventListener('click', () => {
     if (!modal) return;
-    if (modalTitle) modalTitle.textContent = `${RFP_DOC.title} — In-Page Fullscreen Overview`;
+    if (modalTitle) modalTitle.textContent = `${RFP_DOC.title}, In-Page Fullscreen Overview`;
     if (modalDownloadBtn) {
       modalDownloadBtn.href = RFP_DOC.file;
       modalDownloadBtn.download = RFP_DOC.file;

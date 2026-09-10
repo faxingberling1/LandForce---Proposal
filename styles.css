@@ -2720,10 +2720,107 @@ strong {
   color: #047857;
 }
 
+.case-studies-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-md);
+}
+
+.case-studies-counter {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--slate-700);
+}
+
 .featured-case-header {
+  cursor: pointer;
+  user-select: none;
   border-bottom: 1px solid var(--slate-200);
   padding-bottom: 1.5rem;
   margin-bottom: 2rem;
+  transition: all 0.25s ease;
+  border-radius: var(--radius-sm);
+}
+
+.featured-case-header:hover .case-toggle-pill {
+  background: var(--slate-100);
+  border-color: var(--slate-400);
+  color: var(--slate-900);
+}
+
+.featured-case-header:focus-visible {
+  outline: 2px solid var(--primary-forest);
+  outline-offset: 4px;
+}
+
+.featured-case-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.featured-case-header-top .featured-case-badges {
+  margin-bottom: 0;
+}
+
+.case-toggle-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  border: 1px solid var(--slate-300);
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--slate-700);
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.case-toggle-arrow-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-toggle-arrow {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(180deg);
+}
+
+.featured-case-card.is-collapsed .case-toggle-arrow {
+  transform: rotate(0deg);
+}
+
+.featured-case-card.is-collapsed .featured-case-header {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.featured-case-body {
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  max-height: 2800px;
+  overflow: hidden;
+  opacity: 1;
+}
+
+.featured-case-card.is-collapsed .featured-case-body {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  pointer-events: none;
 }
 
 .featured-case-badges {

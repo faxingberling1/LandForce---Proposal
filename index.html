@@ -986,20 +986,37 @@
       </div>
       <div class="card-body">
         <p class="section-intro">
-          Our team specializes in complex mission architectures, research-driven storytelling, dual-sided digital ecosystems, and commercial service engines. The following verified case studies for <strong>Dr. Manashi Ray</strong> (Academic Platform &amp; Monograph Launch), <strong>FitMind AI</strong> (Dual-Sided Mobile &amp; Web Ecosystem), and <strong>The Aesthetic Garage</strong> (High-Performance Commercial Service &amp; PA Regional Platform) demonstrate our proven track record in translating multi-audience objectives, complex state hierarchies, and real-time operational workflows into cohesive, high-impact digital systems:
+          Our team specializes in complex mission architectures, research-driven storytelling, dual-sided digital ecosystems, and commercial service engines. The following verified case studies for <strong>Dr. Manashi Ray</strong> (Academic Platform &amp; Monograph Launch), <strong>FitMind AI</strong> (Dual-Sided Mobile &amp; Web Ecosystem), and <strong>The Aesthetics Garage</strong> (High-Performance Commercial Service &amp; PA Regional Platform) demonstrate our proven track record in translating multi-audience objectives, complex state hierarchies, and real-time operational workflows into cohesive, high-impact digital systems:
         </p>
 
+        <!-- Case Studies Interactive Expand / Collapse Toolbar -->
+        <div class="case-studies-toolbar">
+          <span class="case-studies-counter">3 Featured Case Studies &amp; Verifiable Evidence</span>
+          <button class="btn btn-secondary btn-sm" id="btnToggleAllCases" type="button">
+            <span>Collapse All Case Studies</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6-6"/></svg>
+          </button>
+        </div>
+
         <!-- Featured Case Study Card 1: Dr. Manashi Ray -->
-        <div class="featured-case-card case-theme-editorial">
+        <div class="featured-case-card case-theme-editorial" id="case-study-1">
           <!-- Case Card Header -->
-          <div class="featured-case-header">
-            <div class="featured-case-title-area">
+          <div class="featured-case-header" role="button" tabindex="0" aria-expanded="true" aria-controls="case-body-1" title="Click to collapse or expand case study">
+            <div class="featured-case-header-top">
               <div class="featured-case-badges">
                 <span class="case-badge-primary">Verified Client Case Study</span>
                 <span class="case-badge-secondary">Stanford University Press Monograph Launch</span>
                 <span class="case-badge-tech">Next.js • Accessible UI • Editorial Brand</span>
               </div>
-              <h3 class="featured-case-name">Dr. Manashi Ray — Academic &amp; Public Intellectual Digital Platform</h3>
+              <div class="case-toggle-pill">
+                <span class="case-toggle-text">Collapse Case Study</span>
+                <span class="case-toggle-arrow-wrap">
+                  <svg class="case-toggle-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="featured-case-title-area">
+              <h3 class="featured-case-name">Dr. Manashi Ray, Academic &amp; Public Intellectual Digital Platform</h3>
               <div class="featured-case-meta">
                 <span><strong>Client:</strong> Dr. Manashi Ray, Professor of Sociology (West Virginia State University)</span>
                 <span class="meta-sep">•</span>
@@ -1012,7 +1029,8 @@
             </div>
           </div>
 
-          <!-- Case Card Content Grid -->
+          <div class="featured-case-body" id="case-body-1">
+            <!-- Case Card Content Grid -->
           <div class="featured-case-content-grid">
             <!-- Col 1: The Strategic Challenge -->
             <div class="case-narrative-col">
@@ -1113,19 +1131,28 @@
               </div>
             </div>
           </div>
+          </div> <!-- Close featured-case-body 1 -->
         </div>
 
         <!-- Featured Case Study Card 2: FitMind AI -->
-        <div class="featured-case-card case-theme-biometric">
+        <div class="featured-case-card case-theme-biometric" id="case-study-2">
           <!-- Case Card Header -->
-          <div class="featured-case-header">
-            <div class="featured-case-title-area">
+          <div class="featured-case-header" role="button" tabindex="0" aria-expanded="true" aria-controls="case-body-2" title="Click to collapse or expand case study">
+            <div class="featured-case-header-top">
               <div class="featured-case-badges">
                 <span class="case-badge-primary">Verified Client Case Study</span>
                 <span class="case-badge-mobile">Cross-Platform Mobile (iOS &amp; Android) + Web</span>
                 <span class="case-badge-tech">React Native • Expo SDK • TypeScript • Reanimated 3</span>
               </div>
-              <h3 class="featured-case-name">FitMind AI — Dual-Sided Athletic Biometrics &amp; High-Performance Coaching Ecosystem</h3>
+              <div class="case-toggle-pill">
+                <span class="case-toggle-text">Collapse Case Study</span>
+                <span class="case-toggle-arrow-wrap">
+                  <svg class="case-toggle-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="featured-case-title-area">
+              <h3 class="featured-case-name">FitMind AI, Dual-Sided Athletic Biometrics &amp; High-Performance Coaching Ecosystem</h3>
               <div class="featured-case-meta">
                 <span><strong>Client:</strong> Donovan Barker, Founder &amp; CEO (FitMind AI)</span>
                 <span class="meta-sep">•</span>
@@ -1138,7 +1165,8 @@
             </div>
           </div>
 
-          <!-- Case Card Content Grid -->
+          <div class="featured-case-body" id="case-body-2">
+            <!-- Case Card Content Grid -->
           <div class="featured-case-content-grid">
             <!-- Col 1: The Problem & Strategic Vision -->
             <div class="case-narrative-col">
@@ -1246,21 +1274,30 @@
               </div>
             </div>
           </div>
+          </div> <!-- Close featured-case-body 2 -->
         </div>
 
         <!-- Featured Case Study Card 3: The Aesthetics Garage -->
-        <div class="featured-case-card case-theme-commercial">
+        <div class="featured-case-card case-theme-commercial" id="case-study-3">
           <!-- Case Card Header -->
-          <div class="featured-case-header">
-            <div class="featured-case-title-area">
+          <div class="featured-case-header" role="button" tabindex="0" aria-expanded="true" aria-controls="case-body-3" title="Click to collapse or expand case study">
+            <div class="featured-case-header-top">
               <div class="featured-case-badges">
                 <span class="case-badge-primary">Verified Client Case Study</span>
                 <span class="case-badge-commercial">Commercial Service Platform &amp; PA Regional Growth</span>
                 <span class="case-badge-tech">Next.js • Turbopack • Schema Local SEO • Dynamic Theming</span>
               </div>
-              <h3 class="featured-case-name">The Aesthetic Garage — High-Performance Commercial Service &amp; Regional Growth Engine</h3>
+              <div class="case-toggle-pill">
+                <span class="case-toggle-text">Collapse Case Study</span>
+                <span class="case-toggle-arrow-wrap">
+                  <svg class="case-toggle-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+              </div>
+            </div>
+            <div class="featured-case-title-area">
+              <h3 class="featured-case-name">The Aesthetics Garage, High-Performance Commercial Service &amp; Regional Growth Engine</h3>
               <div class="featured-case-meta">
-                <span><strong>Client:</strong> Usman Mumtaz, Founder &amp; CEO (The Aesthetic Garage)</span>
+                <span><strong>Client:</strong> Usman Mumtaz, Founder &amp; CEO (The Aesthetics Garage)</span>
                 <span class="meta-sep">•</span>
                 <span><strong>Region &amp; Market:</strong> Allentown, Lehigh Valley &amp; Eastern Pennsylvania</span>
               </div>
@@ -1271,18 +1308,19 @@
             </div>
           </div>
 
-          <!-- Case Card Content Grid -->
-          <div class="featured-case-content-grid">
-            <!-- Col 1: The Problem & Strategic Vision -->
-            <div class="case-narrative-col">
-              <div class="narrative-section">
-                <div class="narrative-icon-title">
-                  <span class="narrative-num">01</span>
-                  <h4>The Central Challenge</h4>
-                </div>
-                <p>
-                  <strong>The Aesthetic Garage</strong> is a premier Pennsylvania automotive surface restoration and ceramic coating specialist serving luxury automobile owners and commercial vehicle fleets throughout the Lehigh Valley and Eastern PA. In a competitive regional services market, traditional detailing providers suffer from fragmented customer acquisition—relying on manual phone bookings, static price lists, and disconnected review channels that fail to build confidence with high-value clients:
-                </p>
+          <div class="featured-case-body" id="case-body-3">
+            <!-- Case Card Content Grid -->
+            <div class="featured-case-content-grid">
+              <!-- Col 1: The Problem & Strategic Vision -->
+              <div class="case-narrative-col">
+                <div class="narrative-section">
+                  <div class="narrative-icon-title">
+                    <span class="narrative-num">01</span>
+                    <h4>The Central Challenge</h4>
+                  </div>
+                  <p>
+                    <strong>The Aesthetics Garage</strong> is a premier Pennsylvania automotive surface restoration and ceramic coating specialist serving luxury automobile owners and commercial vehicle fleets throughout the Lehigh Valley and Eastern PA. In a competitive regional services market, traditional detailing providers suffer from fragmented customer acquisition, relying on manual phone bookings, static price lists, and disconnected review channels that fail to build confidence with high-value clients:
+                  </p>
                 <ul class="case-bullet-list">
                   <li><strong>Demonstrating High-End Craftsmanship:</strong> Showcasing transformative multi-stage paint correction, ceramic coatings, and interior restorations on premium vehicles through high-fidelity, interactive media rather than static text.</li>
                   <li><strong>Pennsylvania Weather Education:</strong> Educating regional drivers on Pennsylvania’s harsh winter road salt, acid rain, and oxidation risks to convert one-off detailing jobs into recurring seasonal protection packages.</li>
@@ -1294,7 +1332,7 @@
                     <span>Direct Parallel to Landforce's Commercial Business Lines</span>
                   </div>
                   <p>
-                    This project directly mirrors Landforce’s operational requirement to drive commercial revenue for <strong>The Mill (custom timber, mantels, live-edge slabs)</strong> and <strong>Land Stewardship (environmental crew contracts)</strong> across Pittsburgh and Allegheny County. Just as The Aesthetic Garage transformed fragmented service inquiries into an automated, high-margin commercial pipeline, Neo Gen will engineer Landforce's commercial product catalog, quote request flows, and Salesforce routing to maximize revenue while honoring the non-profit mission.
+                    This project directly mirrors Landforce’s operational requirement to drive commercial revenue for <strong>The Mill (custom timber, mantels, live-edge slabs)</strong> and <strong>Land Stewardship (environmental crew contracts)</strong> across Pittsburgh and Allegheny County. Just as The Aesthetics Garage transformed fragmented service inquiries into an automated, high-margin commercial pipeline, Neo Gen will engineer Landforce's commercial product catalog, quote request flows, and Salesforce routing to maximize revenue while honoring the non-profit mission.
                   </p>
                 </div>
               </div>
@@ -1368,11 +1406,12 @@
               <div class="testimonial-author">
                 <div class="author-info">
                   <div class="author-name">Usman Mumtaz</div>
-                  <div class="author-role">Founder &amp; CEO, The Aesthetic Garage &bull; Luxury Automotive Surface Care &amp; Ceramic Specialists</div>
+                  <div class="author-role">Founder &amp; CEO, The Aesthetics Garage &bull; Luxury Automotive Surface Care &amp; Ceramic Specialists</div>
                 </div>
               </div>
             </div>
           </div>
+          </div> <!-- Close featured-case-body 3 -->
         </div>
 
         <!-- Verifiable Client References -->
@@ -1418,13 +1457,13 @@
               </div>
             </div>
 
-            <!-- Reference 3: Usman Mumtaz (The Aesthetic Garage) -->
+            <!-- Reference 3: Usman Mumtaz (The Aesthetics Garage) -->
             <div class="single-ref-card ref-commercial">
               <div class="ref-avatar avatar-commercial">UM</div>
               <div class="ref-details">
                 <div class="ref-name-row">
                   <span class="ref-name">Usman Mumtaz</span>
-                  <span class="ref-institution">The Aesthetic Garage</span>
+                  <span class="ref-institution">The Aesthetics Garage</span>
                 </div>
                 <div class="ref-title">Founder &amp; CEO &bull; Automotive Surface Care &amp; Ceramic Coating Specialists (Allentown, PA)</div>
                 <div class="ref-scope-tag"><strong>Delivered Scope:</strong> Full-Stack Next.js Platform, Multi-Service Booking Engine, Before/After Media Showcase, Pennsylvania Regional SEO Matrix, Schema Local Business Architecture.</div>
@@ -1957,7 +1996,7 @@
       <div class="modal-header">
         <div class="modal-title-group">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          <span class="modal-title-text" id="modalDocTitle">Landforce Official RFP (13 Pages) — In-Page Overview</span>
+          <span class="modal-title-text" id="modalDocTitle">Landforce Official RFP (13 Pages), In-Page Overview</span>
         </div>
         <div class="modal-controls">
           <a href="Landforce_RFP_Official_Document.pdf" download id="modalDownloadBtn" class="btn btn-sm btn-outline-light">
