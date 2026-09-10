@@ -1,0 +1,12 @@
+{
+  "name": "landforce-interactive-proposal",
+  "version": "1.0.0",
+  "description": "Neo Gen Technologies - Strategic Program Branding & Organizational Web Design Proposal for Landforce",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": ["proposal", "landforce", "neo-gen-technologies", "interactive-proposal"],
+  "author": "Neo Gen Technologies",
+  "license": "ISC"
+}
