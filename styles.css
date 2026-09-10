@@ -4151,12 +4151,17 @@ strong {
   .mobile-nav-drawer,
   .back-to-top,
   .hero-cta-group,
+  .hero-right-col,
+  .hero-pdf-card,
+  .hero-pdf-mobile-banner,
   #mockupAssetToggle,
   #ganttResetFilter,
   .gantt-filter-bar,
-  .persona-selector-grid,
   .btn-print-nav,
   .btn-print-cta,
+  .case-studies-toolbar,
+  .case-toggle-pill,
+  .table-swipe-hint,
   button[onclick*="print"] {
     display: none !important;
   }
@@ -4167,7 +4172,7 @@ strong {
   .hero-section {
     background: radial-gradient(circle at 85% 15%, #25523d 0%, #163024 60%, #0d1e16 100%) !important;
     color: #ffffff !important;
-    padding: 3rem 2.5rem 2.5rem !important;
+    padding: 2.25rem 2.25rem 2rem !important;
     margin-bottom: 0 !important;
     border-radius: var(--radius-lg) !important;
     box-shadow: none !important;
@@ -4177,6 +4182,20 @@ strong {
     break-after: page !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
+  }
+
+  .hero-split-layout {
+    display: block !important;
+  }
+
+  .hero-left-col {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero-right-col,
+  .hero-pdf-card {
+    display: none !important;
   }
 
   .hero-meta-badge {
@@ -4594,6 +4613,96 @@ strong {
   }
 
   /* ==========================================
+     BRAND ARCHITECTURE SANDBOX & TOUCHPOINT PREVIEW
+     ========================================== */
+  .sandbox-nav {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1.25rem !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .sandbox-tab-btn {
+    border: 1px solid var(--slate-300) !important;
+    background: var(--slate-50) !important;
+    padding: 0.85rem !important;
+    border-radius: var(--radius-md) !important;
+    text-align: left !important;
+  }
+
+  .sandbox-tab-btn.active {
+    background: #f0fdf4 !important;
+    border-color: var(--primary-leaf) !important;
+  }
+
+  .sandbox-viewport {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .mockup-preview-zone {
+    page-break-before: always !important;
+    break-before: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-top: 0 !important;
+    border: 1px solid var(--slate-200) !important;
+    background: #ffffff !important;
+    border-radius: var(--radius-md) !important;
+    padding: 1.75rem !important;
+  }
+
+  .mockup-display-stage {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .mockup-strategic-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-top: 1rem !important;
+  }
+
+  /* ==========================================
+     AUDIENCE PATHWAY SIMULATOR (PAGE 6)
+     ========================================== */
+  .persona-selector-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    margin-bottom: 1.25rem !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .persona-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+    padding: 0.35rem 0.75rem !important;
+    border-radius: var(--radius-full) !important;
+    border: 1px solid var(--slate-300) !important;
+    background: var(--slate-100) !important;
+    font-size: 0.8rem !important;
+    color: var(--slate-700) !important;
+  }
+
+  .persona-btn.active {
+    background: var(--primary-leaf) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-leaf) !important;
+    font-weight: 700 !important;
+  }
+
+  .journey-stage,
+  .active-persona-brief {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* ==========================================
      METHODOLOGY WORKSTREAMS (ALL FULLY VISIBLE)
      ========================================== */
   .accordion-content {
@@ -4699,8 +4808,10 @@ strong {
   }
 
   .staff-allocation-box {
-    page-break-before: always !important;
-    break-before: page !important;
+    page-break-before: auto !important;
+    break-before: auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
     margin-top: 1.5rem !important;
   }
 
@@ -4715,6 +4826,111 @@ strong {
     border-radius: var(--radius-md) !important;
     background: var(--slate-50) !important;
     padding: 1rem !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* ==========================================
+     FEATURED CASE STUDIES & REFERENCES
+     ========================================== */
+  #case-studies {
+    padding: 1.5rem 2rem !important;
+  }
+
+  .featured-case-body {
+    max-height: none !important;
+    opacity: 1 !important;
+    display: block !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    padding: 0.75rem 0 0 !important;
+  }
+
+  .featured-case-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 1.25rem !important;
+    border: 1px solid var(--slate-200) !important;
+    background: #ffffff !important;
+    border-radius: var(--radius-lg) !important;
+    padding: 1.15rem 1.35rem !important;
+    box-shadow: none !important;
+  }
+
+  .featured-case-header {
+    padding-bottom: 0.5rem !important;
+    border-bottom: 1px solid var(--slate-200) !important;
+  }
+
+  .featured-case-name {
+    font-size: 1.2rem !important;
+    margin: 0.3rem 0 !important;
+  }
+
+  .featured-case-meta {
+    font-size: 0.78rem !important;
+  }
+
+  .featured-case-scope-pill {
+    padding: 0.25rem 0.6rem !important;
+    font-size: 0.75rem !important;
+    margin-top: 0.35rem !important;
+  }
+
+  .narrative-section p,
+  .case-bullet-list li,
+  .case-feature-list li {
+    font-size: 0.81rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .featured-case-impact-section {
+    padding: 0.65rem 0.85rem !important;
+    margin-top: 0.65rem !important;
+  }
+
+  .metric-highlight-card {
+    padding: 0.65rem 0.85rem !important;
+  }
+
+  .metric-big-num {
+    font-size: 1.35rem !important;
+  }
+
+  .featured-case-testimonial {
+    padding: 0.6rem 0.85rem !important;
+    margin-top: 0.65rem !important;
+  }
+
+  .featured-case-testimonial p {
+    font-size: 0.81rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  #case-study-2,
+  #case-study-3 {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .references-box {
+    page-break-before: always !important;
+    break-before: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-top: 1.25rem !important;
+  }
+
+  .references-grid {
+    page-break-before: auto !important;
+    break-before: auto !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .single-ref-card {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }
@@ -4900,7 +5116,14 @@ strong {
   .challenge-card,
   .tech-spec-card,
   .photo-tier-card,
-  .case-card,
+  .featured-case-card,
+  .featured-case-body,
+  .references-box,
+  .single-ref-card,
+  .mockup-preview-zone,
+  .mockup-strategic-card,
+  .sandbox-viewport,
+  .staff-allocation-box,
   .milestone-term-card,
   .matrix-container,
   .pillars-diagram-container,

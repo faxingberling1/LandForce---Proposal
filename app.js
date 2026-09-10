@@ -1512,24 +1512,7 @@ function initHeroPdfViewer() {
     }
   });
 
-  // Top navigation PDF button (#btnPrint) smooth-scrolls directly to this inline PDF viewer
-  const btnPrint = document.getElementById('btnPrint');
-  if (btnPrint) {
-    btnPrint.addEventListener('click', (e) => {
-      e.preventDefault();
-      const widget = document.getElementById('heroPdfWidget');
-      if (widget) {
-        widget.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        widget.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-        widget.style.transform = 'scale(1.02)';
-        widget.style.boxShadow = '0 0 45px rgba(74, 222, 128, 0.45)';
-        setTimeout(() => {
-          widget.style.transform = '';
-          widget.style.boxShadow = '';
-        }, 1200);
-      }
-    });
-  }
+
 
   // Initialize pills for Landforce RFP document
   renderPills();
