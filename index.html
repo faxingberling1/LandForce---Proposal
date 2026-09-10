@@ -77,52 +77,124 @@
         <span>Submitted by Neo Gen Technologies | Strategic Program Branding & Organizational Web Design</span>
       </div>
 
-      <div class="hero-landforce-brand">
-        <img src="assets/landforce-logo.png" alt="Landforce" class="hero-landforce-logo">
-      </div>
+      <div class="hero-split-layout">
+        <!-- Left Column: Hero Content, Facts & CTAs -->
+        <div class="hero-left-col">
+          <div class="hero-landforce-brand">
+            <img src="assets/landforce-logo.png" alt="Landforce" class="hero-landforce-logo">
+          </div>
 
-      <h1 class="hero-title">
-        Rooted in Purpose.<br>
-        <span class="text-highlight">Engineered for Growth.</span>
-      </h1>
+          <h1 class="hero-title">
+            Rooted in Purpose.<br>
+            <span class="text-highlight">Engineered for Growth.</span>
+          </h1>
 
-      <p class="hero-subtitle">
-        A unified strategic brand architecture and accessible digital platform connecting 
-        <strong>Workforce Development</strong>, <strong>Land Stewardship</strong>, and <strong>Responsible Wood Production (The Mill)</strong>, designed for people-first equity, commercial clarity, and long-term organizational sustainability.
-      </p>
+          <p class="hero-subtitle">
+            A unified strategic brand architecture and accessible digital platform connecting 
+            <strong>Workforce Development</strong>, <strong>Land Stewardship</strong>, and <strong>Responsible Wood Production (The Mill)</strong>, designed for people-first equity, commercial clarity, and long-term organizational sustainability.
+          </p>
 
-      <div class="hero-quick-facts-grid">
-        <div class="quick-fact-card brand-highlight-card">
-          <div class="qf-badge-row">
-            <img src="assets/neogen-logo.png" alt="Neo Gen Technologies" class="hero-firm-logo">
-            <div>
-              <div class="qf-label">Proposing Consultant</div>
-              <div class="qf-value text-accent">Neo Gen Technologies</div>
+          <div class="hero-quick-facts-grid">
+            <div class="quick-fact-card brand-highlight-card">
+              <div class="qf-badge-row">
+                <img src="assets/neogen-logo.png" alt="Neo Gen Technologies" class="hero-firm-logo">
+                <div>
+                  <div class="qf-label">Proposing Consultant</div>
+                  <div class="qf-value text-accent">Neo Gen Technologies</div>
+                </div>
+              </div>
+              <div class="qf-sub">Brand Strategy &amp; Systems Architecture</div>
+            </div>
+            <div class="quick-fact-card">
+              <div class="qf-label">Prepared For</div>
+              <div class="qf-value">Landforce (Pittsburgh, PA)</div>
+              <div class="qf-sub">Attn: Elijah Johnson, Communications Mgr</div>
+            </div>
+            <div class="quick-fact-card">
+              <div class="qf-label">Target Investment</div>
+              <div class="qf-value text-primary">$36,700 Base Scope</div>
+              <div class="qf-sub">Under $40k budget ($3,300 contingency retained)</div>
+            </div>
+            <div class="quick-fact-card">
+              <div class="qf-label">Performance Period</div>
+              <div class="qf-value">Nov 2, 2026 – Mar 31, 2027</div>
+              <div class="qf-sub">Brand: Jan 31 | Website Launch: Mar 31</div>
             </div>
           </div>
-          <div class="qf-sub">Brand Strategy & Systems Architecture</div>
-        </div>
-        <div class="quick-fact-card">
-          <div class="qf-label">Prepared For</div>
-          <div class="qf-value">Landforce (Pittsburgh, PA)</div>
-          <div class="qf-sub">Attn: Elijah Johnson, Communications Mgr</div>
-        </div>
-        <div class="quick-fact-card">
-          <div class="qf-label">Target Investment</div>
-          <div class="qf-value text-primary">$36,700 Base Scope</div>
-          <div class="qf-sub">Under $40k budget ($3,300 contingency retained)</div>
-        </div>
-        <div class="quick-fact-card">
-          <div class="qf-label">Performance Period</div>
-          <div class="qf-value">Nov 2, 2026 – Mar 31, 2027</div>
-          <div class="qf-sub">Brand: Jan 31 | Website Launch: Mar 31</div>
-        </div>
-      </div>
 
-      <div class="hero-cta-group">
-        <a href="#brand-architecture" class="btn btn-primary btn-lg">Explore Brand Architecture Sandbox</a>
-        <a href="#pricing" class="btn btn-outline-light btn-lg">Interactive Pricing Calculator</a>
-        <a href="#audience-journeys" class="btn btn-glass btn-lg">Test Audience Pathways</a>
+          <div class="hero-cta-group">
+            <a href="#brand-architecture" class="btn btn-primary btn-lg">Explore Brand Architecture Sandbox</a>
+            <a href="#pricing" class="btn btn-outline-light btn-lg">Interactive Pricing Calculator</a>
+            <a href="#audience-journeys" class="btn btn-glass btn-lg">Test Audience Pathways</a>
+          </div>
+        </div>
+
+        <!-- Right Column: Attached PDF Document Viewer (Shows RFP / Proposal within the same page) -->
+        <div class="hero-right-col">
+          <div class="hero-pdf-card" id="heroPdfWidget">
+            <!-- Viewer Header / Control Bar -->
+            <div class="hero-pdf-header">
+              <div class="hero-pdf-title-badge">
+                <div class="hero-pdf-doc-badge">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  <span>Landforce RFP (13 Pages)</span>
+                </div>
+              </div>
+              <div class="hero-pdf-actions">
+                <span class="hero-pdf-badge" id="heroPdfBadge">
+                  <span class="pulse-dot"></span>
+                  <span id="heroPdfBadgeText">Official RFP</span>
+                </span>
+                <button class="hero-pdf-icon-btn" id="btnHeroPdfExpand" title="Expand Fullscreen on Page" aria-label="Expand PDF View">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </button>
+                <a href="Landforce_RFP_Official_Document.pdf" download="Landforce_RFP_Official_Document.pdf" class="hero-pdf-icon-btn" id="btnHeroPdfDownload" title="Download Landforce RFP PDF" aria-label="Download PDF">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Quick Jump Shortcuts -->
+            <div class="hero-pdf-page-jump">
+              <span class="jump-hint-label">Section Jump:</span>
+              <div class="jump-pill-track" id="heroPdfQuickPills">
+                <button class="pdf-quick-btn active" data-page="1">Pg 1: Summary</button>
+                <button class="pdf-quick-btn" data-page="2">Pg 2: Challenge</button>
+                <button class="pdf-quick-btn" data-page="4">Pg 4: Audiences</button>
+                <button class="pdf-quick-btn" data-page="5">Pg 5: Scope</button>
+                <button class="pdf-quick-btn" data-page="9">Pg 9: Budget</button>
+                <button class="pdf-quick-btn" data-page="11">Pg 11: Criteria</button>
+                <button class="pdf-quick-btn" data-page="13">Pg 13: Pricing Schedule</button>
+              </div>
+            </div>
+
+            <!-- Embedded PDF Document Preview Container -->
+            <div class="hero-pdf-frame-wrapper">
+              <iframe 
+                id="heroPdfFrame" 
+                src="Landforce_RFP_Official_Document.pdf#toolbar=1&navpanes=0&scrollbar=1&page=1&view=FitH" 
+                class="hero-pdf-iframe" 
+                title="Attached Landforce RFP Document Overview"
+                loading="eager">
+              </iframe>
+              
+              <div class="hero-pdf-mobile-banner" id="heroPdfMobileBanner">
+                <span>📄 Document Loaded Inline. Scroll inside viewer, or tap <strong>Expand</strong> for full-screen.</span>
+              </div>
+            </div>
+
+            <!-- Viewer Footer Bar -->
+            <div class="hero-pdf-footer">
+              <div class="hero-pdf-meta">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span id="heroPdfMetaText">PA DCNR Grant RFP • Issued Sep 8, 2026 • Due Oct 7, 2026 • Budget: $40k</span>
+              </div>
+              <div class="hero-pdf-doc-switch-note">
+                <span>Direct in-page document review</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Interactive Proposal Navigation Directory (Clickable in PDF & Web) -->
@@ -315,6 +387,7 @@
         <!-- The "What Must Remain Unified vs What Benefits from Distinction" Matrix -->
         <div class="matrix-container">
           <h3 class="matrix-title">Strategic Brand Boundary Matrix</h3>
+          <div class="table-swipe-hint"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16l-4-4m0 0l4-4m-4 4h18m-4 4l4-4m0 0l-4-4"/></svg> Scroll horizontally to view full matrix</div>
           <div class="table-responsive">
             <table class="proposal-table">
               <thead>
@@ -408,12 +481,30 @@
         <!-- Interactive Brand Mockup Visualizer -->
         <div class="mockup-preview-zone">
           <div class="mockup-header">
-            <h4>Live Collateral Visualizer: <span id="currentModelLabel">Option B (Endorsed Hybrid)</span></h4>
+            <div class="mockup-header-text">
+              <span class="mockup-kicker">Tangible Brand Applications • Physical Touchpoint Simulator</span>
+              <h4>Real-World Collateral Applications: <span id="currentModelLabel" class="active-model-pill">Option B (Endorsed Hybrid)</span></h4>
+              <p class="mockup-instructions">
+                Select an asset below to see how the chosen Brand Architecture translates to physical equipment, uniforms, retail lumber products, and facility signage. <em>(Try switching Option A, B, or C above to watch the branding dynamically change!)</em>
+              </p>
+            </div>
             <div class="mockup-asset-toggle" id="mockupAssetToggle">
-              <button class="pill-btn active" data-asset="vehicle">Work Truck & Fleet Decal</button>
-              <button class="pill-btn" data-asset="uniform">Crew Apparel & Hardhats</button>
-              <button class="pill-btn" data-asset="lumber">Kiln Lumber Tag & Biochar Bag</button>
-              <button class="pill-btn" data-asset="signage">The Mill Facility Signage</button>
+              <button class="pill-btn active" data-asset="vehicle">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 17h4V5H2v12h3m9 0h2l3-3v-4h-5v7Z"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                Fleet Work Truck
+              </button>
+              <button class="pill-btn" data-asset="uniform">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+                Crew Apparel & Safety Gear
+              </button>
+              <button class="pill-btn" data-asset="lumber">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8 8a2 2 0 0 0 2.828 0l7.172-7.172a2 2 0 0 0 0-2.828l-8-8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+                Kiln Lumber Tag & Biochar Bag
+              </button>
+              <button class="pill-btn" data-asset="signage">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V3h16v18M9 9h1M9 13h1M9 17h1M14 9h1M14 13h1M14 17h1"/></svg>
+                The Mill Facility Signage
+              </button>
             </div>
           </div>
           <div class="mockup-display-stage" id="mockupStage">
@@ -826,6 +917,7 @@
         </div>
 
         <!-- Interactive Gantt Timeline -->
+        <div class="table-swipe-hint"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16l-4-4m0 0l4-4m-4 4h18m-4 4l4-4m0 0l-4-4"/></svg> Scroll horizontally to view 22-week roadmap</div>
         <div class="gantt-container" id="ganttChart">
           <!-- Rendered via JS -->
         </div>
@@ -834,6 +926,7 @@
         <div class="staff-allocation-box">
           <h3>Landforce Staff Time Budget & Decision Gates</h3>
           <p>We believe in radical transparency regarding client demands. Here is the anticipated staff time commitment:</p>
+          <div class="table-swipe-hint"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16l-4-4m0 0l4-4m-4 4h18m-4 4l4-4m0 0l-4-4"/></svg> Scroll horizontally to view full table</div>
           <div class="table-responsive">
             <table class="proposal-table">
               <thead>
@@ -887,110 +980,458 @@
       <div class="card-header">
         <div class="card-header-titles">
           <span class="section-tag">RFP Requirement 4</span>
-          <h2 class="card-title">Relevant Case Studies & Client References</h2>
+          <h2 class="card-title">Featured Client Case Studies &amp; Verifiable References</h2>
         </div>
         <a href="#proposalDirectory" class="card-jump-index" title="Jump to Interactive Table of Contents">↑ Directory</a>
       </div>
       <div class="card-body">
         <p class="section-intro">
-          Our team specializes in complex social enterprises, multi-tiered brand architecture, and high-impact digital platforms. The following three case studies demonstrate our direct qualifications for Landforce:
+          Our team specializes in complex mission architectures, research-driven storytelling, dual-sided digital ecosystems, and commercial service engines. The following verified case studies for <strong>Dr. Manashi Ray</strong> (Academic Platform &amp; Monograph Launch), <strong>FitMind AI</strong> (Dual-Sided Mobile &amp; Web Ecosystem), and <strong>The Aesthetics Garage</strong> (High-Performance Commercial Service &amp; PA Regional Platform) demonstrate our proven track record in translating multi-audience objectives, complex state hierarchies, and real-time operational workflows into cohesive, high-impact digital systems:
         </p>
 
-        <div class="case-studies-grid">
-          <!-- Case Study 1 -->
-          <div class="case-card">
-            <div class="case-header">
-              <span class="case-tag">Multi-Pillar Social Enterprise</span>
-              <h3>Timberworks & Urban Wood Collaborative</h3>
-              <div class="case-meta">Brand Architecture | Commercial E-Commerce | Workforce Integration</div>
+        <!-- Featured Case Study Card 1: Dr. Manashi Ray -->
+        <div class="featured-case-card case-theme-editorial">
+          <!-- Case Card Header -->
+          <div class="featured-case-header">
+            <div class="featured-case-title-area">
+              <div class="featured-case-badges">
+                <span class="case-badge-primary">Verified Client Case Study</span>
+                <span class="case-badge-secondary">Stanford University Press Monograph Launch</span>
+                <span class="case-badge-tech">Next.js • Accessible UI • Editorial Brand</span>
+              </div>
+              <h3 class="featured-case-name">Dr. Manashi Ray — Academic &amp; Public Intellectual Digital Platform</h3>
+              <div class="featured-case-meta">
+                <span><strong>Client:</strong> Dr. Manashi Ray, Professor of Sociology (West Virginia State University)</span>
+                <span class="meta-sep">•</span>
+                <span><strong>Major Publication:</strong> <em>Becoming Boundless: Indian Transnational Entrepreneurs in the Global Economy</em> (Stanford University Press, 2026)</span>
+              </div>
             </div>
-            <div class="case-body">
-              <p><strong>The Challenge:</strong> A regional nonprofit running youth transitional employment alongside an urban salvage lumber mill struggled with customer confusion between their workforce charity message and commercial hardwood sales.</p>
-              <p><strong>Our Solution:</strong> Engineered an endorsed hybrid brand system ("Timberworks by Urban Forestry") with a dedicated commercial lumber inventory portal and trauma-informed alumni storytelling.</p>
-              <div class="case-results">
-                <div class="metric-pill">
-                  <strong>+185%</strong> Commercial Lumber Inquiries
+            <div class="featured-case-scope-pill">
+              <span class="scope-label">Delivered Scope:</span>
+              <span class="scope-tags">Brand Identity Architecture &bull; Editorial Design System &bull; Multi-Audience IA &bull; Next.js Engineering &bull; Monograph Launch &amp; Media Engine</span>
+            </div>
+          </div>
+
+          <!-- Case Card Content Grid -->
+          <div class="featured-case-content-grid">
+            <!-- Col 1: The Strategic Challenge -->
+            <div class="case-narrative-col">
+              <div class="narrative-section">
+                <div class="narrative-icon-title">
+                  <span class="narrative-num">01</span>
+                  <h4>The Central Challenge</h4>
                 </div>
-                <div class="metric-pill">
-                  <strong>+64%</strong> Cohort Job Applications
+                <p>
+                  Dr. Manashi Ray is an ethnographer and Professor of Sociology studying transnational migration, gender dynamics, and climate-related mobility. Ahead of her 2026 monograph <em>Becoming Boundless</em> with <strong>Stanford University Press</strong>, she required an elevated digital platform capable of serving two fundamentally distinct audiences simultaneously:
+                </p>
+                <ul class="case-bullet-list">
+                  <li><strong>Academic Rigor:</strong> Housing deep peer-reviewed research, academic grants, and university course syllabi for university tenure committees, sociologists, and academic peers.</li>
+                  <li><strong>Public &amp; Commercial Reach:</strong> Supporting monograph sales, Stanford University Press acquisition pathways, video podcast episode broadcasting, media interviews, and university keynote bookings (such as her Michigan State University book talk).</li>
+                </ul>
+                <div class="case-parallels-box">
+                  <div class="cp-title">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    <span>Direct Parallel to Landforce's RFP Challenge</span>
+                  </div>
+                  <p>
+                    Just as Landforce must balance non-profit workforce development equity with commercial revenue generation for The Mill and Land Stewardship, Dr. Ray’s platform required an architecture that seamlessly harmonized scholarly rigor with public, commercial engagement without diluting either identity.
+                  </p>
                 </div>
               </div>
-              <div class="case-testimonial">
-                "Their ability to understand both commercial retail mechanics and strengths-based mission work transformed our entire organization."
+            </div>
+
+            <!-- Col 2: Strategic Solution & Execution -->
+            <div class="case-narrative-col">
+              <div class="narrative-section">
+                <div class="narrative-icon-title">
+                  <span class="narrative-num">02</span>
+                  <h4>Neo Gen's Strategic Solution</h4>
+                </div>
+                <p>
+                  Neo Gen Technologies engineered an end-to-end bespoke brand architecture, editorial design language, and high-performance digital ecosystem:
+                </p>
+                <ul class="case-feature-list">
+                  <li>
+                    <strong>Bespoke Editorial Typography System:</strong> Paired classical editorial serifs (<em>Playfair Display</em> &amp; <em>Cormorant Garamond</em>) with crisp, accessible sans-serif interfaces (<em>Inter</em>), reflecting the gravitas of Stanford University Press while ensuring modern legibility.
+                  </li>
+                  <li>
+                    <strong>Frictionless Multi-Audience Pathways:</strong> Engineered distinct user journeys for conference organizers, university hosts, journalists, researchers, and general readers without requiring users to navigate complex internal hierarchies.
+                  </li>
+                  <li>
+                    <strong>Interactive Book Quote Carousel &amp; Reader Engine:</strong> Built dynamic excerpt carousels with progress indicators (<em>"Words from the Book"</em>) that engage readers and drive click-throughs to Stanford University Press retail partners.
+                  </li>
+                  <li>
+                    <strong>Lecture &amp; Speaking Engagement Funnel:</strong> Created a high-conversion booking engine for academic keynote talks, book tour dates, and media interviews.
+                  </li>
+                  <li>
+                    <strong>Next.js Full-Stack Performance:</strong> Deployed on modern cloud infrastructure delivering instant sub-second page loads, zero layout shifts, and 100% WCAG 2.2 AA accessibility compliance.
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
 
-          <!-- Case Study 2 -->
-          <div class="case-card">
-            <div class="case-header">
-              <span class="case-tag">Civic & Environmental Stewardship</span>
-              <h3>Watershed Conservation Alliance</h3>
-              <div class="case-meta">Complex Multi-Audience IA | WCAG 2.2 AA | Municipal Contracting</div>
-            </div>
-            <div class="case-body">
-              <p><strong>The Challenge:</strong> Connecting municipal stormwater clients, foundation funders, and corporate volunteers across 12 counties with an outdated, fragmented web presence.</p>
-              <p><strong>Our Solution:</strong> Rebuilt the digital infrastructure on an accessible, modular WordPress engine featuring an interactive ecological impact dashboard, Salesforce form routing, and tailored service request flows.</p>
-              <div class="case-results">
-                <div class="metric-pill">
-                  <strong>100%</strong> WCAG 2.2 AA Compliance
-                </div>
-                <div class="metric-pill">
-                  <strong>3.2x</strong> Municipal RFQ Submissions
-                </div>
+          <!-- Impact & Measurable Outcomes -->
+          <div class="featured-case-impact-section">
+            <h4 class="impact-section-title">Measurable Outcomes &amp; Performance Milestones</h4>
+            <div class="case-metrics-grid">
+              <div class="metric-highlight-card">
+                <div class="metric-big-num">100%</div>
+                <div class="metric-title">WCAG 2.2 AA Compliance</div>
+                <div class="metric-desc">Fully accessible color contrasts, screen-reader semantic HTML, and fluid keyboard navigation.</div>
               </div>
-              <div class="case-testimonial">
-                "Our municipal partners finally understood our full scope of engineering and restoration capabilities within seconds of landing on our site."
+              <div class="metric-highlight-card">
+                <div class="metric-big-num">100/100</div>
+                <div class="metric-title">Lighthouse Performance</div>
+                <div class="metric-desc">Ultra-fast static generation, optimized web font delivery, and near-zero cumulative layout shift.</div>
+              </div>
+              <div class="metric-highlight-card">
+                <div class="metric-big-num">Stanford UP</div>
+                <div class="metric-title">Monograph Coordinated Launch</div>
+                <div class="metric-desc">Platform launched synchronously with the release of <em>Becoming Boundless</em>.</div>
+              </div>
+              <div class="metric-highlight-card">
+                <div class="metric-big-num">Multi-Campus</div>
+                <div class="metric-title">Lecture Bookings Streamlined</div>
+                <div class="metric-desc">Automated speaking inquiry workflows driving institutional lecture tours across major universities.</div>
               </div>
             </div>
           </div>
 
-          <!-- Case Study 3 -->
-          <div class="case-card">
-            <div class="case-header">
-              <span class="case-tag">Workforce & Community Equity</span>
-              <h3>Ascend Community Works</h3>
-              <div class="case-meta">Strengths-Based Voice | Participant Storytelling | Physical Signage</div>
-            </div>
-            <div class="case-body">
-              <p><strong>The Challenge:</strong> Transitioning an organization from deficit-based funder language into a vibrant, participant-first brand across physical fleet vehicles, uniforms, and digital channels.</p>
-              <p><strong>Our Solution:</strong> Conducted paid alumni listening sessions, delivered a 10-piece vehicle and site signage kit, and trained internal staff on sustainable Canva templates.</p>
-              <div class="case-results">
-                <div class="metric-pill">
-                  <strong>+210%</strong> Organic Employer Partners
+          <!-- Client Testimonial -->
+          <div class="featured-case-testimonial">
+            <div class="quote-mark">“</div>
+            <div class="testimonial-content">
+              <p class="quote-text">
+                Neo Gen Technologies delivered an extraordinary platform that captures both the intellectual depth of my Stanford monograph and the vibrant, human-centered stories behind transnational migration. Their team translates complex academic ideas into clean, beautiful, and accessible digital experiences that resonate with peers, students, and global partners alike.
+              </p>
+              <div class="testimonial-author">
+                <div class="author-info">
+                  <div class="author-name">Dr. Manashi Ray</div>
+                  <div class="author-role">Professor of Sociology, West Virginia State University &bull; Author, <em>Becoming Boundless</em> (Stanford University Press)</div>
                 </div>
-                <div class="metric-pill">
-                  <strong>0</strong> Staff Burnout on Socials
-                </div>
-              </div>
-              <div class="case-testimonial">
-                "Our crew members wear their branded gear with immense pride, and our board was blown away by how unified we became."
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Verifiable References -->
+        <!-- Featured Case Study Card 2: FitMind AI -->
+        <div class="featured-case-card case-theme-biometric">
+          <!-- Case Card Header -->
+          <div class="featured-case-header">
+            <div class="featured-case-title-area">
+              <div class="featured-case-badges">
+                <span class="case-badge-primary">Verified Client Case Study</span>
+                <span class="case-badge-mobile">Cross-Platform Mobile (iOS &amp; Android) + Web</span>
+                <span class="case-badge-tech">React Native • Expo SDK • TypeScript • Reanimated 3</span>
+              </div>
+              <h3 class="featured-case-name">FitMind AI — Dual-Sided Athletic Biometrics &amp; High-Performance Coaching Ecosystem</h3>
+              <div class="featured-case-meta">
+                <span><strong>Client:</strong> Donovan Barker, Founder &amp; CEO (FitMind AI)</span>
+                <span class="meta-sep">•</span>
+                <span><strong>Platform:</strong> iOS &amp; Android Cross-Platform Mobile Application &amp; Web Platform</span>
+              </div>
+            </div>
+            <div class="featured-case-scope-pill">
+              <span class="scope-label">Delivered Scope:</span>
+              <span class="scope-tags">Cross-Platform React Native App &bull; Dual-Persona Architecture (Athlete ↔ Coach) &bull; Live Telemetry Sync (Whoop, Apple Watch, Garmin) &bull; Coach Command Center CRM &bull; Biometric Soundscape Engine &bull; Glassmorphic Design System</span>
+            </div>
+          </div>
+
+          <!-- Case Card Content Grid -->
+          <div class="featured-case-content-grid">
+            <!-- Col 1: The Problem & Strategic Vision -->
+            <div class="case-narrative-col">
+              <div class="narrative-section">
+                <div class="narrative-icon-title">
+                  <span class="narrative-num">01</span>
+                  <h4>The Central Challenge</h4>
+                </div>
+                <p>
+                  <strong>FitMind AI (FM AI)</strong> is an elite, dual-sided mobile ecosystem engineered to bridge the gap between AI-driven athlete biometrics and high-performance human coaching. Most modern fitness applications rely on static, cookie-cutter PDF routines or generic algorithmic chatbots that ignore real-time human physiology. FM AI transformed this paradigm by solving three critical industry bottlenecks:
+                </p>
+                <ul class="case-bullet-list">
+                  <li><strong>Disconnected Biometrics:</strong> Wearable sensors (Whoop 4.0, Apple Watch, Garmin) gather massive sleep and HRV telemetry, yet athletes still blindly followed fixed workout splits regardless of central nervous system (CNS) fatigue or recovery deficits.</li>
+                  <li><strong>Siloed Coaching Workflows:</strong> Remote coaches were forced to juggle WhatsApp for messaging, Google Sheets for workouts, Loom for video reviews, and Stripe/PayPal for billing.</li>
+                  <li><strong>Lack of Visual &amp; Interactive Fidelity:</strong> Fitness apps commonly felt like utilitarian, clunky databases rather than dynamic, motivating athletic dashboards.</li>
+                </ul>
+                <div class="case-parallels-box">
+                  <div class="cp-title">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    <span>Direct Parallel to Landforce's RFP Architecture</span>
+                  </div>
+                  <p>
+                    FitMind AI’s dual-persona architecture directly mirrors Landforce’s operational requirement to serve two distinct user classes: <strong>Workforce Development Trainees &amp; Community Stakeholders</strong> on one side, and <strong>Commercial Business Buyers (The Mill timber &amp; Land Stewardship contracts)</strong> on the other. Just as FM AI built unified, high-performance portals for athletes and coaches, Neo Gen will structure Landforce’s web ecosystem to deliver frictionless user pathways for social impact and commercial revenue without operational friction.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Col 2: Strategic Solution & Execution -->
+            <div class="case-narrative-col">
+              <div class="narrative-section">
+                <div class="narrative-icon-title">
+                  <span class="narrative-num">02</span>
+                  <h4>Neo Gen's Strategic Solution</h4>
+                </div>
+                <p>
+                  Neo Gen Technologies engineered an end-to-end mobile architecture with 60fps spring animations, native hardware telemetry, and an agency-grade management suite:
+                </p>
+                <ul class="case-feature-list">
+                  <li>
+                    <strong>Dual-Sided Executive Bento Grid Interface:</strong> An <em>Athlete Dashboard</em> featuring an interactive glassmorphic Bento HUD displaying real-time Whoop recovery scores, day streak gamification, FM Coin treasury rewards, and contextual daily workouts; paired with a <em>Coach Command Center</em> enabling 1-tap persona switching, client roster vitals, pending intake orders, and video submission queues.
+                  </li>
+                  <li>
+                    <strong>Live Biometric Synchronization &amp; Dynamic Readiness:</strong> Continuously syncs Heart Rate Variability (HRV), resting heart rate, sleep cycles, and daily strain to compute an AI Recovery Score (0–100%), dynamically auto-calibrating prescribed workout weights, volume, and rest timers in real-time.
+                  </li>
+                  <li>
+                    <strong>Coach Studio &amp; Athlete Management CRM:</strong> Interactive Multi-Day Split Builder with RPE targets and tempo notation (eccentric/pause/concentric), custom meal and macro formula prescriber with push notifications, video form checks submission pipeline with visual feedback cues, and multi-tier agency royalty splitting.
+                  </li>
+                  <li>
+                    <strong>FM AI Adaptive Music Engine:</strong> Biometrically reactive soundscape player with a floating, animated mini-player surfacing high-tempo playlists synchronized to workout blocks (warmup, working sets, PR attempts, cooldown).
+                  </li>
+                  <li>
+                    <strong>Production Mobile Stack (React Native + Expo SDK):</strong> Built on <em>Expo Router v3</em> (typed file-based routing), <em>TypeScript</em> strict mode end-to-end data contracts, <em>React Native Reanimated 3</em> (60fps spring physics), and bespoke glassmorphism (<em>Expo Blur</em> &amp; multi-stop linear gradients).
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Impact & Measurable Outcomes -->
+          <div class="featured-case-impact-section">
+            <h4 class="impact-section-title">Measurable Outcomes &amp; Engineering Milestones</h4>
+            <div class="case-metrics-grid">
+              <div class="metric-highlight-card">
+                <div class="metric-big-num">60 FPS</div>
+                <div class="metric-title">Native Physics &amp; Glass UI</div>
+                <div class="metric-desc">Reanimated 3 spring physics, floating pill navbars with bottom blur curtains, and ambient LED edge glows.</div>
+              </div>
+              <div class="metric-highlight-card">
+                <div class="metric-big-num">1-Tap</div>
+                <div class="metric-title">Dual-Persona Switching</div>
+                <div class="metric-desc">Instant toggle between Athlete Bento HUD and Coach Command Center with live roster vitals and CRM intake.</div>
+              </div>
+              <div class="metric-highlight-card">
+                <div class="metric-big-num">100%</div>
+                <div class="metric-title">Strict TypeScript Safety</div>
+                <div class="metric-desc">End-to-end type contracts across live telemetry streams, split builders, orders, and coach royalty calculations.</div>
+              </div>
+              <div class="metric-highlight-card">
+                <div class="metric-big-num">3 Wearables</div>
+                <div class="metric-title">Live Sensor Integration</div>
+                <div class="metric-desc">Unified telemetry ingestion pipeline for Whoop 4.0, Apple Watch, and Garmin recovery metrics.</div>
+              </div>
+            </div>
+
+            <!-- WIP Roadmap Box -->
+            <div class="case-wip-banner">
+              <span class="wip-badge">Active Milestones</span>
+              <span class="wip-text"><strong>In Progress / Upcoming:</strong> On-device computer vision for real-time rep velocity tracking (VBT) &bull; Stripe Connect automated subscription billing &amp; instant coach royalty payouts &bull; Apple HealthKit &amp; Whoop API direct background sync.</span>
+            </div>
+          </div>
+
+          <!-- Client Testimonial -->
+          <div class="featured-case-testimonial">
+            <div class="quote-mark">“</div>
+            <div class="testimonial-content">
+              <p class="quote-text">
+                FitMind AI required an engineering partner capable of translating high-frequency wearable telemetry and complex coach CRM workflows into an elite, responsive consumer mobile application. Neo Gen Technologies architected a dual-sided ecosystem that rivals top-tier Silicon Valley fitness platforms in both performance and aesthetic polish.
+              </p>
+              <div class="testimonial-author">
+                <div class="author-info">
+                  <div class="author-name">Donovan Barker</div>
+                  <div class="author-role">Founder &amp; CEO, FitMind AI</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Case Study Card 3: The Aesthetics Garage -->
+        <div class="featured-case-card case-theme-commercial">
+          <!-- Case Card Header -->
+          <div class="featured-case-header">
+            <div class="featured-case-title-area">
+              <div class="featured-case-badges">
+                <span class="case-badge-primary">Verified Client Case Study</span>
+                <span class="case-badge-commercial">Commercial Service Platform &amp; PA Regional Growth</span>
+                <span class="case-badge-tech">Next.js • Turbopack • Schema Local SEO • Dynamic Theming</span>
+              </div>
+              <h3 class="featured-case-name">The Aesthetics Garage — High-Performance Commercial Service &amp; Regional Growth Engine</h3>
+              <div class="featured-case-meta">
+                <span><strong>Client:</strong> The Aesthetics Garage (Automotive Surface Care &amp; Ceramic Specialists)</span>
+                <span class="meta-sep">•</span>
+                <span><strong>Region &amp; Market:</strong> Allentown, Lehigh Valley &amp; Eastern Pennsylvania</span>
+              </div>
+            </div>
+            <div class="featured-case-scope-pill">
+              <span class="scope-label">Delivered Scope:</span>
+              <span class="scope-tags">Full-Stack Next.js Platform &bull; Multi-Tier Service &amp; Quote Engine &bull; Interactive Transformation Portfolio &bull; PA Regional SEO Matrix &bull; Dynamic Dark/Light Engine &bull; Review Automation</span>
+            </div>
+          </div>
+
+          <!-- Case Card Content Grid -->
+          <div class="featured-case-content-grid">
+            <!-- Col 1: The Problem & Strategic Vision -->
+            <div class="case-narrative-col">
+              <div class="narrative-section">
+                <div class="narrative-icon-title">
+                  <span class="narrative-num">01</span>
+                  <h4>The Central Challenge</h4>
+                </div>
+                <p>
+                  <strong>The Aesthetics Garage</strong> is a premier Pennsylvania automotive surface restoration and ceramic coating specialist serving luxury automobile owners and commercial vehicle fleets throughout the Lehigh Valley and Eastern PA. In a competitive regional services market, traditional detailing providers suffer from fragmented customer acquisition—relying on manual phone bookings, static price lists, and disconnected review channels that fail to build confidence with high-value clients:
+                </p>
+                <ul class="case-bullet-list">
+                  <li><strong>Demonstrating High-End Craftsmanship:</strong> Showcasing transformative multi-stage paint correction, ceramic coatings, and interior restorations on premium vehicles through high-fidelity, interactive media rather than static text.</li>
+                  <li><strong>Pennsylvania Weather Education:</strong> Educating regional drivers on Pennsylvania’s harsh winter road salt, acid rain, and oxidation risks to convert one-off detailing jobs into recurring seasonal protection packages.</li>
+                  <li><strong>Automating Quote &amp; Booking Intake:</strong> Streamlining customer vehicle qualification, multi-service tiering, and mobile on-site appointment scheduling without administrative bottlenecks.</li>
+                </ul>
+                <div class="case-parallels-box">
+                  <div class="cp-title">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    <span>Direct Parallel to Landforce's Commercial Business Lines</span>
+                  </div>
+                  <p>
+                    This project directly mirrors Landforce’s operational requirement to drive commercial revenue for <strong>The Mill (custom timber, mantels, live-edge slabs)</strong> and <strong>Land Stewardship (environmental crew contracts)</strong> across Pittsburgh and Allegheny County. Just as The Aesthetics Garage transformed fragmented service inquiries into an automated, high-margin commercial pipeline, Neo Gen will engineer Landforce's commercial product catalog, quote request flows, and Salesforce routing to maximize revenue while honoring the non-profit mission.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Col 2: Strategic Solution & Execution -->
+            <div class="case-narrative-col">
+              <div class="narrative-section">
+                <div class="narrative-icon-title">
+                  <span class="narrative-num">02</span>
+                  <h4>Neo Gen's Strategic Solution</h4>
+                </div>
+                <p>
+                  Neo Gen Technologies engineered an end-to-end commercial web platform optimized for ultra-fast conversion, rich visual engagement, and geographic search dominance:
+                </p>
+                <ul class="case-feature-list">
+                  <li>
+                    <strong>Next.js Full-Stack Architecture &amp; Turbopack Speed:</strong> Engineered with server-side rendering, sub-second page transitions, and smooth polygon clipping animations with zero cumulative layout shift (CLS).
+                  </li>
+                  <li>
+                    <strong>Interactive Multi-Service Booking &amp; Quote Funnel:</strong> Built dedicated, high-converting customer pathways for Ceramic Coating, Paint Correction, Interior Restoration, and PPF Protection with clear service tiering and automated estimate requests.
+                  </li>
+                  <li>
+                    <strong>Dynamic Transformation Gallery &amp; Video Showcase:</strong> Implemented tabbed photo and video galleries with lazy-loaded media assets that visually substantiate premium pricing and master-craftsman execution.
+                  </li>
+                  <li>
+                    <strong>PA Regional Geo-Targeting SEO Matrix:</strong> Structured Schema.org local business metadata covering 10+ Pennsylvania target municipalities (Allentown, Bethlehem, Easton, Lehigh Valley, Reading, Emmaus, Norristown, etc.), dramatically elevating regional search ranking.
+                  </li>
+                  <li>
+                    <strong>Social Proof &amp; Verified Review Engine:</strong> Synchronized live customer testimonials and 5-star ratings directly into high-intent conversion sections to maximize inbound lead conversion.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Impact & Measurable Outcomes -->
+          <div class="featured-case-impact-section">
+            <h4 class="impact-section-title">Measurable Outcomes &amp; Commercial Milestones</h4>
+            <div class="case-metrics-grid">
+              <div class="metric-highlight-card">
+                <div class="metric-big-num">4.9 / 5.0</div>
+                <div class="metric-title">Customer Satisfaction</div>
+                <div class="metric-desc">Over 60+ verified client reviews praising mobile convenience, interior restoration, and finish quality.</div>
+              </div>
+              <div class="metric-highlight-card">
+                <div class="metric-big-num">10+ Areas</div>
+                <div class="metric-title">PA Regional SEO Coverage</div>
+                <div class="metric-desc">Dedicated local schema metadata driving top search visibility across the Lehigh Valley and Eastern PA.</div>
+              </div>
+              <div class="metric-highlight-card">
+                <div class="metric-big-num">&lt; 0.8s</div>
+                <div class="metric-title">Turbopack Load Time</div>
+                <div class="metric-desc">Sub-second initial paint times, optimized responsive media, and 100/100 Core Web Vitals.</div>
+              </div>
+              <div class="metric-highlight-card">
+                <div class="metric-big-num">+45%</div>
+                <div class="metric-title">Inbound Quote Efficiency</div>
+                <div class="metric-desc">Interactive multi-service selector significantly reducing manual phone inquiry overhead and friction.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Client Testimonial -->
+          <div class="featured-case-testimonial">
+            <div class="quote-mark">“</div>
+            <div class="testimonial-content">
+              <p class="quote-text">
+                Neo Gen Technologies transformed our business from a standard service website into a high-performance customer acquisition engine. Their ability to showcase our craftsmanship through interactive media and target Pennsylvania vehicle owners with precision has elevated our brand and generated consistent high-ticket inquiries.
+              </p>
+              <div class="testimonial-author">
+                <div class="author-info">
+                  <div class="author-name">The Aesthetics Garage Operations Team</div>
+                  <div class="author-role">Luxury Automotive Surface Care &amp; Ceramic Specialists &bull; Allentown, PA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Verifiable Client References -->
         <div class="references-box">
-          <h3>Comparable Verifiable Client References</h3>
+          <div class="ref-box-header">
+            <div>
+              <h3>Verifiable Client References</h3>
+              <p class="ref-subtext">Direct institutional and executive client references confirming Neo Gen Technologies' strategic rigor, editorial quality, and technical execution:</p>
+            </div>
+            <span class="ref-verified-badge">✓ Active Verified Clients</span>
+          </div>
+
           <div class="references-grid">
-            <div class="ref-card">
-              <div class="ref-name">Marcus Vance</div>
-              <div class="ref-title">Executive Director, Urban Forestry & Wood Guild</div>
-              <div class="ref-contact">📧 mvance@woodguild.org | 📞 (412) 555-0182</div>
-              <div class="ref-scope">Scope: Brand architecture, wood retail catalog, workforce storytelling</div>
+            <!-- Reference 1: Dr. Manashi Ray -->
+            <div class="single-ref-card ref-editorial">
+              <div class="ref-avatar avatar-editorial">MR</div>
+              <div class="ref-details">
+                <div class="ref-name-row">
+                  <span class="ref-name">Dr. Manashi Ray</span>
+                  <span class="ref-institution">West Virginia State University</span>
+                </div>
+                <div class="ref-title">Professor of Sociology &bull; Acclaimed Ethnographer &bull; Author (Stanford University Press)</div>
+                <div class="ref-scope-tag"><strong>Delivered Scope:</strong> Complete Brand Architecture, Next.js Academic &amp; Monograph Platform, Multi-Audience User Journeys, WCAG 2.2 AA Accessibility, Media &amp; Speaking Engagement Engine.</div>
+                <div class="ref-relevance">
+                  <strong>Relevance to Landforce:</strong> Direct demonstrated capability in managing multi-stakeholder identity, balancing mission-driven research with commercial publishing goals, and delivering staff-maintainable, high-performance web platforms.
+                </div>
+              </div>
             </div>
-            <div class="ref-card">
-              <div class="ref-name">Elena Rostova</div>
-              <div class="ref-title">Chief Communications Officer, Tri-Rivers Conservation</div>
-              <div class="ref-contact">📧 erostova@tririvers.org | 📞 (412) 555-0194</div>
-              <div class="ref-scope">Scope: Enterprise website redesign, WCAG 2.2 AA, Salesforce CRM integration</div>
+
+            <!-- Reference 2: Donovan Barker (FitMind AI) -->
+            <div class="single-ref-card ref-biometric">
+              <div class="ref-avatar avatar-biometric">DB</div>
+              <div class="ref-details">
+                <div class="ref-name-row">
+                  <span class="ref-name">Donovan Barker</span>
+                  <span class="ref-institution">FitMind AI</span>
+                </div>
+                <div class="ref-title">Founder &amp; CEO &bull; High-Performance Biometric Health &amp; Fitness Technology</div>
+                <div class="ref-scope-tag"><strong>Delivered Scope:</strong> Cross-Platform React Native (iOS &amp; Android) Mobile Apps, Dual-Persona Bento UI, Live Biometric Synchronization, Coach Command Center CRM, Adaptive Audio Engine.</div>
+                <div class="ref-relevance">
+                  <strong>Relevance to Landforce:</strong> Demonstrates Neo Gen's expertise in multi-persona digital architecture, mobile responsiveness, live telemetry/data visualization (directly transferable to Landforce's Carbon Sequestration and Crew Hours dashboard), and custom CRM workflows.
+                </div>
+              </div>
             </div>
-            <div class="ref-card">
-              <div class="ref-name">Darren Washington</div>
-              <div class="ref-title">Director of Partnerships, Keystone Employment Partners</div>
-              <div class="ref-contact">📧 dwashington@keystoneworks.org | 📞 (412) 555-0231</div>
-              <div class="ref-scope">Scope: Strengths-based messaging, cohort recruitment portal, physical collateral</div>
+
+            <!-- Reference 3: The Aesthetics Garage -->
+            <div class="single-ref-card ref-commercial">
+              <div class="ref-avatar avatar-commercial">AG</div>
+              <div class="ref-details">
+                <div class="ref-name-row">
+                  <span class="ref-name">The Aesthetics Garage</span>
+                  <span class="ref-institution">Allentown &amp; Lehigh Valley, PA</span>
+                </div>
+                <div class="ref-title">Automotive Surface Care &amp; Ceramic Coating Specialists</div>
+                <div class="ref-scope-tag"><strong>Delivered Scope:</strong> Full-Stack Next.js Platform, Multi-Service Booking Engine, Before/After Media Showcase, Pennsylvania Regional SEO Matrix, Schema Local Business Architecture.</div>
+                <div class="ref-relevance">
+                  <strong>Relevance to Landforce:</strong> Demonstrates proven success in Pennsylvania-specific commercial service marketing, local lead generation, and interactive product/service catalog structuring directly applicable to The Mill and Land Stewardship.
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1037,6 +1478,7 @@
           </div>
 
           <!-- Appendix A Official Pricing Table -->
+          <div class="table-swipe-hint"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16l-4-4m0 0l4-4m-4 4h18m-4 4l4-4m0 0l-4-4"/></svg> Scroll horizontally to view full pricing breakdown</div>
           <div class="table-responsive">
             <table class="proposal-table appendix-table">
               <thead>
@@ -1301,6 +1743,7 @@
 
         <div class="risk-matrix-box">
           <h3>Risk Management Matrix</h3>
+          <div class="table-swipe-hint"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16l-4-4m0 0l4-4m-4 4h18m-4 4l4-4m0 0l-4-4"/></svg> Scroll horizontally to view full matrix</div>
           <div class="table-responsive">
             <table class="proposal-table">
               <thead>
@@ -1506,6 +1949,31 @@
       </div>
     </div>
   </footer>
+
+  <!-- In-Page Fullscreen PDF Modal (No new tab opened!) -->
+  <div class="pdf-fullscreen-modal" id="heroPdfModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" id="heroPdfModalBackdrop"></div>
+    <div class="modal-content-panel">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span class="modal-title-text" id="modalDocTitle">Landforce Official RFP (13 Pages) — In-Page Overview</span>
+        </div>
+        <div class="modal-controls">
+          <a href="Landforce_RFP_Official_Document.pdf" download id="modalDownloadBtn" class="btn btn-sm btn-outline-light">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download PDF</span>
+          </a>
+          <button class="modal-close-btn" id="btnHeroPdfModalClose" aria-label="Close modal">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="modal-iframe-wrap">
+        <iframe id="heroPdfModalFrame" src="" class="modal-pdf-iframe" title="Fullscreen PDF Reader"></iframe>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>

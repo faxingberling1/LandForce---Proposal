@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGanttChart();
   initBudgetCalculator();
   initPrintButton();
+  initHeroPdfViewer();
 });
 
 /* --------------------------------------------------------------------------
@@ -23,17 +24,37 @@ function initMobileMenu() {
   const drawer = document.getElementById('mobileDrawer');
   if (!toggleBtn || !drawer) return;
 
-  toggleBtn.addEventListener('click', () => {
+  function setDrawerState(open) {
+    drawer.classList.toggle('open', open);
+    toggleBtn.classList.toggle('active', open);
+    toggleBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     const isOpen = drawer.classList.contains('open');
-    drawer.classList.toggle('open', !isOpen);
-    toggleBtn.classList.toggle('active', !isOpen);
+    setDrawerState(!isOpen);
   });
 
+  // Close when clicking any link in drawer
   drawer.querySelectorAll('.drawer-link').forEach(link => {
     link.addEventListener('click', () => {
-      drawer.classList.remove('open');
-      toggleBtn.classList.remove('active');
+      setDrawerState(false);
     });
+  });
+
+  // Close when tapping outside drawer
+  document.addEventListener('click', (e) => {
+    if (drawer.classList.contains('open') && !drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+      setDrawerState(false);
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      setDrawerState(false);
+    }
   });
 }
 
@@ -149,147 +170,573 @@ const brandModelsData = {
 
 const mockupAssetsData = {
   vehicle: {
-    title: 'Fleet Vehicle & Work Truck Decal System',
+    title: 'Fleet Vehicle & Work Truck Livery Decal System',
     render: (modelKey) => {
-      if (modelKey === 'model1') {
-        return `
-          <div class="mockup-vehicle-canvas">
-            <div class="truck-outline">
-              <div class="truck-cab"></div>
-              <div class="truck-bed">
-                <div class="truck-logo-area">
-                  <div class="logo-box">
-                    <span class="truck-logo-text">LANDFORCE</span>
-                    <span class="truck-sub">Environmental Social Enterprise</span>
-                  </div>
-                </div>
+      const isModel1 = modelKey === 'model1';
+      const isModel2 = modelKey === 'model2';
+      const isModel3 = modelKey === 'model3';
+
+      return `
+        <div class="mockup-vehicle-canvas">
+          <div class="mockup-stage-badge-row">
+            <span class="ms-status-pill ${isModel2 ? 'ms-status-recom' : 'ms-status-warn'}">
+              ${isModel2 ? '★ Option B (Recommended): Co-Branded Dual-Revenue Livery' : isModel1 ? '⚠️ Option A: 100% Monolithic Fleet Wrap' : '⚠️ Option C: Split Disjointed Fleet'}
+            </span>
+            <span class="ms-asset-type">Asset Type: Heavy Duty Crew-Cab Utility Truck (Class 3/4)</span>
+          </div>
+
+          <div class="truck-illustration-wrapper">
+            <svg viewBox="0 0 760 260" class="truck-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Work truck with brand decal application">
+              <defs>
+                <linearGradient id="truckCabGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#e2e8f0"/>
+                </linearGradient>
+                <linearGradient id="lfGreenGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1f4734"/>
+                  <stop offset="100%" stop-color="#132b20"/>
+                </linearGradient>
+                <linearGradient id="millTimberGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#3d1f0e"/>
+                  <stop offset="50%" stop-color="#542c13"/>
+                  <stop offset="100%" stop-color="#2a1408"/>
+                </linearGradient>
+                <linearGradient id="chromeGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#f8fafc"/>
+                  <stop offset="50%" stop-color="#cbd5e1"/>
+                  <stop offset="100%" stop-color="#64748b"/>
+                </linearGradient>
+                <linearGradient id="tireGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#334155"/>
+                  <stop offset="100%" stop-color="#090d16"/>
+                </linearGradient>
+                <linearGradient id="rimGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#f1f5f9"/>
+                  <stop offset="100%" stop-color="#64748b"/>
+                </linearGradient>
+                <linearGradient id="windshieldGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.5"/>
+                  <stop offset="40%" stop-color="#0284c7" stop-opacity="0.75"/>
+                  <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95"/>
+                </linearGradient>
+                <filter id="truckShadow" x="-10%" y="-10%" width="120%" height="140%">
+                  <feGaussianBlur stdDeviation="5"/>
+                </filter>
+              </defs>
+
+              <!-- Ground Shadow -->
+              <ellipse cx="380" cy="242" rx="350" ry="10" fill="rgba(15,23,42,0.22)" filter="url(#truckShadow)"/>
+
+              <!-- Front Bumper -->
+              <rect x="20" y="178" width="34" height="36" rx="6" fill="url(#chromeGrad)" stroke="#475569" stroke-width="1.5"/>
+              <rect x="20" y="196" width="22" height="14" rx="3" fill="#1e293b"/>
+
+              <!-- Hood & Front Grill -->
+              <path d="M 38 184 L 38 126 Q 48 118 95 116 L 175 116 L 196 52 Q 202 46 216 46 L 325 46 L 336 50 L 336 186 Z" fill="url(#truckCabGrad)" stroke="#334155" stroke-width="2"/>
+              <!-- Front Headlight -->
+              <rect x="40" y="128" width="16" height="24" rx="4" fill="#fef08a" stroke="#ca8a04" stroke-width="1"/>
+              <rect x="40" y="154" width="16" height="10" rx="2" fill="#f97316"/>
+
+              <!-- Front Windshield -->
+              <path d="M 198 112 L 210 56 Q 215 52 225 52 L 318 52 L 318 112 Z" fill="url(#windshieldGrad)" stroke="#334155" stroke-width="1.5"/>
+              <path d="M 230 56 L 212 108" stroke="#ffffff" stroke-width="2" stroke-opacity="0.5" stroke-linecap="round"/>
+
+              <!-- Side Mirror -->
+              <rect x="178" y="98" width="14" height="26" rx="4" fill="#1e293b"/>
+              <line x1="192" y1="106" x2="202" y2="110" stroke="#0f172a" stroke-width="3"/>
+
+              <!-- Cab Door Seam -->
+              <path d="M 200 116 L 200 186" stroke="#94a3b8" stroke-width="1.5"/>
+              <rect x="290" y="122" width="18" height="6" rx="2" fill="#1e293b"/>
+
+              <!-- Front Cab Door Decal Panel -->
+              <rect x="204" y="118" width="124" height="66" rx="4" fill="${isModel1 ? '#1f4734' : isModel2 ? 'url(#lfGreenGrad)' : '#334155'}" stroke="${isModel2 ? '#4ade80' : '#475569'}" stroke-width="1"/>
+              
+              <!-- Cab Door Brand Graphic -->
+              <g transform="translate(210, 130)">
+                <path d="M 6 12 Q 10 2 20 2 Q 22 10 16 16 Q 10 20 6 12 Z" fill="#4ade80"/>
+                <path d="M 8 16 Q 2 12 3 6 Q 10 7 12 14 Z" fill="#86efac"/>
+                <text x="26" y="12" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="900" fill="#ffffff" letter-spacing="1">LANDFORCE</text>
+                <text x="26" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="700" fill="#86efac">${isModel2 ? 'LAND STEWARDSHIP' : isModel1 ? 'WORKFORCE DEV' : 'FIELD CREW'}</text>
+                <text x="26" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-size="6" font-weight="500" fill="#d1fae5">Pittsburgh, PA • Certified</text>
+              </g>
+
+              <!-- Heavy Duty Utility Body (Cargo Bed / Commercial Box) -->
+              <path d="M 336 46 L 710 46 Q 724 46 724 60 L 724 190 L 336 190 Z" fill="${isModel1 ? '#1f4734' : isModel2 ? 'url(#millTimberGrad)' : '#e2e8f0'}" stroke="#334155" stroke-width="2"/>
+              <!-- Upper Tool Rack / Ladder Rail -->
+              <rect x="330" y="34" width="395" height="8" rx="2" fill="url(#chromeGrad)" stroke="#475569" stroke-width="1"/>
+              <line x1="360" y1="42" x2="360" y2="46" stroke="#334155" stroke-width="3"/>
+              <line x1="520" y1="42" x2="520" y2="46" stroke="#334155" stroke-width="3"/>
+              <line x1="680" y1="42" x2="680" y2="46" stroke="#334155" stroke-width="3"/>
+
+              <!-- Utility Bed Branding Graphics -->
+              ${isModel2 ? `
+                <!-- Option B: Endorsed Hybrid The Mill Decal -->
+                <rect x="350" y="58" width="355" height="120" rx="6" fill="rgba(0,0,0,0.3)" stroke="#c87a32" stroke-width="1.5"/>
+                <rect x="350" y="58" width="355" height="24" rx="6" fill="#c87a32"/>
+                <text x="365" y="74" font-family="'Space Grotesk', sans-serif" font-size="9" font-weight="900" fill="#ffffff" letter-spacing="1.5">★ COMMERCIAL WOOD PRODUCTION & RETAIL</text>
+                
+                <g transform="translate(365, 94)">
+                  <circle cx="20" cy="20" r="16" fill="#c87a32"/>
+                  <circle cx="20" cy="20" r="8" fill="#2a1408"/>
+                  <path d="M 12 20 L 28 20 M 20 12 L 20 28" stroke="#ffffff" stroke-width="2"/>
+                  
+                  <text x="46" y="16" font-family="'Space Grotesk', sans-serif" font-size="20" font-weight="900" fill="#fef08a" letter-spacing="2">THE MILL</text>
+                  <text x="146" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#ffffff">BY LANDFORCE</text>
+                  <text x="46" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#fde68a">Kiln-Dried Urban Hardwoods • Custom Milling • Biochar</text>
+                  <text x="46" y="44" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="500" fill="#fed7aa">East End Facility • (412) 555-WOOD • landforcepgh.org/the-mill</text>
+                </g>
+              ` : isModel1 ? `
+                <g transform="translate(370, 95)">
+                  <text x="0" y="20" font-family="'Space Grotesk', sans-serif" font-size="22" font-weight="900" fill="#ffffff" letter-spacing="2">LANDFORCE</text>
+                  <text x="0" y="40" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#86efac">Environmental Social Enterprise & Workforce Program</text>
+                  <text x="0" y="58" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="500" fill="#cbd5e1">landforcepgh.org • Pittsburgh, PA</text>
+                  <rect x="-10" y="66" width="340" height="20" rx="3" fill="#ef4444" fill-opacity="0.25" stroke="#ef4444" stroke-width="1"/>
+                  <text x="0" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#fca5a5">⚠️ Zero lumber / commercial mill branding visible to passing contractors</text>
+                </g>
+              ` : `
+                <g transform="translate(370, 90)">
+                  <text x="0" y="18" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="900" fill="#713f12">THE INDEPENDENT MILL</text>
+                  <text x="0" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="#9a3412">Separate Commercial Operation</text>
+                  <rect x="-10" y="48" width="340" height="34" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1"/>
+                  <text x="0" y="62" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#b91c1c">⚠️ DUAL FLEET REQUIRED: Field crews cannot drive this truck.</text>
+                  <text x="0" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="500" fill="#7f1d1d">Requires purchasing duplicate vehicles for Landforce and The Mill ($120k+ overhead).</text>
+                </g>
+              `}
+
+              <!-- Rear Step & Tail light -->
+              <rect x="724" y="156" width="8" height="24" rx="2" fill="#ef4444" stroke="#991b1b" stroke-width="1"/>
+              <rect x="712" y="192" width="22" height="12" rx="3" fill="url(#chromeGrad)" stroke="#475569" stroke-width="1"/>
+
+              <!-- Front Wheel Well & Wheel -->
+              <path d="M 105 190 A 48 48 0 0 1 205 190 Z" fill="#0f172a"/>
+              <circle cx="155" cy="210" r="42" fill="url(#tireGrad)" stroke="#0f172a" stroke-width="2"/>
+              <circle cx="155" cy="210" r="38" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="3,3"/>
+              <circle cx="155" cy="210" r="26" fill="url(#rimGrad)" stroke="#1e293b" stroke-width="1.5"/>
+              <circle cx="155" cy="210" r="10" fill="#0f172a"/>
+              <circle cx="155" cy="194" r="2.5" fill="#f8fafc"/>
+              <circle cx="155" cy="226" r="2.5" fill="#f8fafc"/>
+              <circle cx="139" cy="210" r="2.5" fill="#f8fafc"/>
+              <circle cx="171" cy="210" r="2.5" fill="#f8fafc"/>
+
+              <!-- Rear Wheel Well & Dual Wheels -->
+              <path d="M 550 190 A 54 54 0 0 1 665 190 Z" fill="#0f172a"/>
+              <circle cx="608" cy="210" r="44" fill="url(#tireGrad)" stroke="#0f172a" stroke-width="2"/>
+              <circle cx="608" cy="210" r="40" fill="none" stroke="#475569" stroke-width="1.5" stroke-dasharray="3,3"/>
+              <circle cx="608" cy="210" r="28" fill="url(#rimGrad)" stroke="#1e293b" stroke-width="1.5"/>
+              <circle cx="608" cy="210" r="12" fill="#0f172a"/>
+              <circle cx="608" cy="192" r="2.5" fill="#f8fafc"/>
+              <circle cx="608" cy="228" r="2.5" fill="#f8fafc"/>
+              <circle cx="590" cy="210" r="2.5" fill="#f8fafc"/>
+              <circle cx="626" cy="210" r="2.5" fill="#f8fafc"/>
+              <rect x="656" y="206" width="8" height="34" rx="2" fill="#0f172a"/>
+            </svg>
+          </div>
+
+          <div class="mockup-strategic-card">
+            <div class="msc-header">
+              <span class="msc-title">Why Fleet Livery Resolves RFP Section 5.B:</span>
+              <span class="msc-badge ${isModel2 ? 'badge-recom' : ''}">
+                ${isModel2 ? 'Recommended Strategic Choice' : isModel1 ? 'Commercial Visibility Flaw' : 'Capital Cost Hazard'}
+              </span>
+            </div>
+            <div class="msc-grid">
+              <div class="msc-col">
+                <div class="msc-icon">🏛️</div>
+                <strong>Municipal Contracting Recognition</strong>
+                <p>${isModel2 
+                  ? 'City DPW and Allegheny County park managers immediately identify the trusted Landforce brand on the cab, preserving 10 years of civic reputation and public procurement eligibility.' 
+                  : isModel1 
+                  ? 'Municipal recognition is preserved, but commercial wood inventory remains 100% invisible to regional buyers.' 
+                  : 'Stewardship crews driving The Mill vehicles confuse municipal site inspectors regarding prevailing wage contracts.'}
+                </p>
+              </div>
+              <div class="msc-col">
+                <div class="msc-icon">🪵</div>
+                <strong>Commercial Retail Impact (The Mill)</strong>
+                <p>${isModel2 
+                  ? 'Woodworkers, furniture builders, and contractors see "THE MILL by Landforce" in traffic and immediately recognize a local supplier for kiln-dried urban hardwoods and custom milling.' 
+                  : isModel1 
+                  ? 'Contractors assume Landforce only does trail maintenance and never realize 10,000 sq ft of kiln-dried urban timber is available.' 
+                  : 'Forces full duplicate investment into separate brand marketing and duplicate delivery trucks.'}
+                </p>
+              </div>
+              <div class="msc-col">
+                <div class="msc-icon">🚜</div>
+                <strong>One Shared Fleet (Zero Duplication)</strong>
+                <p>${isModel2 
+                  ? 'Zero fleet duplication: Landforce operates a single shared 4-truck fleet that moves stewardship field gear by day and delivers lumber orders by afternoon.' 
+                  : isModel1 
+                  ? 'Single fleet, but missed revenue potential for commercial timber operations.' 
+                  : 'Requires purchasing dedicated separate trucks for field and mill, adding $120,000+ in unnecessary capital cost.'}
+                </p>
               </div>
             </div>
-            <p class="mockup-caption">Single generic logo on all 4 trucks. Fails to promote lumber sales or highlight specific municipal contracting capabilities on active roads.</p>
           </div>
-        `;
-      } else if (modelKey === 'model2') {
-        return `
-          <div class="mockup-vehicle-canvas">
-            <div class="truck-outline model2-truck">
-              <div class="truck-cab"></div>
-              <div class="truck-bed">
-                <div class="truck-dual-brand">
-                  <div class="brand-left">
-                    <span class="truck-logo-text">LANDFORCE</span>
-                    <span class="truck-sub-line">Land Stewardship & Ecological Services</span>
-                  </div>
-                  <div class="brand-divider"></div>
-                  <div class="brand-right">
-                    <span class="mill-logo-text">THE MILL</span>
-                    <span class="mill-sub-line">Kiln-Dried Urban Hardwoods • By Landforce</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p class="mockup-caption"><strong>Endorsed Co-Branded Fleet Wrap:</strong> Bold visual recognition on regional roads. Promotes stewardship contracting on the driver side and East End lumber availability on the commercial side, tied together with the unifying Landforce seal.</p>
-          </div>
-        `;
-      } else {
-        return `
-          <div class="mockup-vehicle-canvas">
-            <div class="truck-outline">
-              <div class="truck-bed"><span class="truck-logo-text" style="color: #999;">3 Disjointed Vehicles</span></div>
-            </div>
-            <p class="mockup-caption">Requires trucks dedicated exclusively to either Landforce or The Mill, preventing cross-utilization of fleet vehicles.</p>
-          </div>
-        `;
-      }
+        </div>
+      `;
     }
   },
   uniform: {
-    title: 'Crew Apparel, High-Vis Vests & Hardhat Decals',
+    title: 'Crew Apparel, High-Vis Vests & Safety Certification Gear',
     render: (modelKey) => {
-      if (modelKey === 'model2') {
-        return `
-          <div class="mockup-uniform-canvas">
-            <div class="uniform-display-grid">
-              <div class="uniform-item">
-                <div class="vest-shape">
-                  <div class="vest-chest-patch">LANDFORCE</div>
-                  <div class="vest-back-text">CREW MEMBER<br><span style="font-size: 8px;">Restoring Land. Building Careers.</span></div>
-                </div>
-                <span>Stewardship Field Vest</span>
+      const isModel2 = modelKey === 'model2';
+      return `
+        <div class="mockup-uniform-canvas">
+          <div class="mockup-stage-badge-row">
+            <span class="ms-status-pill ${isModel2 ? 'ms-status-recom' : ''}">
+              ${isModel2 ? '★ Dignity-Centered & Role-Specific Workwear System' : 'Uniform Apparel Application'}
+            </span>
+            <span class="ms-asset-type">Asset Type: ANSI Class 2 Field Vest • The Mill Workshop Apron • OSHA Hardhat</span>
+          </div>
+
+          <div class="uniform-vector-stage">
+            <svg viewBox="0 0 740 240" class="uniform-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Field safety vest, workshop apron, and safety hardhat">
+              <defs>
+                <linearGradient id="hiVisGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#facc15"/>
+                  <stop offset="100%" stop-color="#eab308"/>
+                </linearGradient>
+                <linearGradient id="reflectiveGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#e2e8f0"/>
+                  <stop offset="50%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#cbd5e1"/>
+                </linearGradient>
+                <linearGradient id="apronGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#542c13"/>
+                  <stop offset="100%" stop-color="#3d1f0e"/>
+                </linearGradient>
+                <linearGradient id="hardhatGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#e2e8f0"/>
+                </linearGradient>
+              </defs>
+
+              <!-- 1. High-Vis Field Vest -->
+              <g transform="translate(40, 20)">
+                <!-- Vest Body Outline -->
+                <path d="M 45 10 L 80 10 L 100 45 L 120 10 L 155 10 L 175 60 L 175 180 Q 175 190 165 190 L 35 190 Q 25 190 25 180 L 25 60 Z" fill="url(#hiVisGrad)" stroke="#ca8a04" stroke-width="2"/>
+                <!-- Neck V-Cutout -->
+                <path d="M 80 10 Q 100 70 120 10 Z" fill="#0f172a" opacity="0.15"/>
+                <!-- 3M Reflective Horizontal Stripes -->
+                <rect x="25" y="115" width="150" height="20" fill="url(#reflectiveGrad)" stroke="#94a3b8" stroke-width="1"/>
+                <rect x="25" y="145" width="150" height="20" fill="url(#reflectiveGrad)" stroke="#94a3b8" stroke-width="1"/>
+                <!-- 3M Reflective Vertical Shoulder Straps -->
+                <rect x="52" y="10" width="18" height="105" fill="url(#reflectiveGrad)" stroke="#94a3b8" stroke-width="1"/>
+                <rect x="130" y="10" width="18" height="105" fill="url(#reflectiveGrad)" stroke="#94a3b8" stroke-width="1"/>
+                <!-- Center Zipper -->
+                <line x1="100" y1="70" x2="100" y2="190" stroke="#1e293b" stroke-width="2.5" stroke-dasharray="2,2"/>
+                <!-- Chest Patch -->
+                <rect x="36" y="76" width="50" height="22" rx="3" fill="#163024" stroke="#4ade80" stroke-width="1"/>
+                <text x="61" y="90" font-family="'Space Grotesk', sans-serif" font-size="6.5" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="0.5">LANDFORCE</text>
+                <text x="61" y="96" font-family="'Plus Jakarta Sans', sans-serif" font-size="4.5" font-weight="700" fill="#86efac" text-anchor="middle">CREW</text>
+                <!-- Radio loop / pen slot -->
+                <rect x="136" y="80" width="12" height="14" rx="2" fill="#1e293b" opacity="0.4"/>
+                <text x="100" y="212" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#1e293b" text-anchor="middle">Field Stewardship Vest</text>
+                <text x="100" y="226" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="500" fill="#64748b" text-anchor="middle">ANSI Class 2 • Strengths-Based</text>
+              </g>
+
+              <!-- 2. The Mill Workshop Apron -->
+              <g transform="translate(275, 20)">
+                <!-- Apron Body -->
+                <path d="M 60 15 L 140 15 L 155 70 L 175 190 Q 175 198 165 198 L 35 198 Q 25 198 25 190 L 45 70 Z" fill="url(#apronGrad)" stroke="#27140b" stroke-width="2"/>
+                <!-- Neck Strap -->
+                <path d="M 65 15 Q 100 -5 135 15" fill="none" stroke="#78350f" stroke-width="6"/>
+                <!-- Brass Rivets -->
+                <circle cx="65" cy="18" r="3.5" fill="#facc15" stroke="#92400e" stroke-width="1"/>
+                <circle cx="135" cy="18" r="3.5" fill="#facc15" stroke="#92400e" stroke-width="1"/>
+                <!-- Stamped Leather Chest Badge -->
+                <rect x="52" y="32" width="96" height="34" rx="4" fill="#78350f" stroke="#ca8a04" stroke-width="1.2"/>
+                <text x="100" y="47" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="900" fill="#fef08a" text-anchor="middle" letter-spacing="1">THE MILL</text>
+                <text x="100" y="58" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">BY LANDFORCE</text>
+                <!-- Large Tool Pocket with Rule -->
+                <rect x="45" y="115" width="110" height="60" rx="3" fill="#3f2212" stroke="#78350f" stroke-width="1.5"/>
+                <line x1="100" y1="115" x2="100" y2="175" stroke="#27140b" stroke-width="1.5" stroke-dasharray="3,3"/>
+                <!-- Woodworker Pencil in Pocket -->
+                <rect x="135" y="98" width="6" height="30" rx="1" fill="#ea580c" stroke="#9a3412" stroke-width="0.8"/>
+                <polygon points="135,98 141,98 138,90" fill="#fde047"/>
+                <text x="100" y="212" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#1e293b" text-anchor="middle">The Mill Work Apron</text>
+                <text x="100" y="226" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="500" fill="#64748b" text-anchor="middle">Heavy Waxed Canvas • Urban Wood</text>
+              </g>
+
+              <!-- 3. OSHA Certified Safety Hardhat -->
+              <g transform="translate(520, 25)">
+                <!-- Hardhat Dome -->
+                <path d="M 25 125 C 25 50 155 50 155 125 Q 165 130 170 134 Q 165 142 145 142 L 35 142 Q 15 142 10 134 Q 15 130 25 125 Z" fill="url(#hardhatGrad)" stroke="#64748b" stroke-width="2"/>
+                <!-- Top Ridge -->
+                <path d="M 80 56 Q 90 48 100 56 L 100 125 L 80 125 Z" fill="#cbd5e1" opacity="0.6"/>
+                <!-- Front Green Safety Cross Badge -->
+                <circle cx="90" cy="95" r="15" fill="#163024" stroke="#4ade80" stroke-width="1.5"/>
+                <path d="M 86 95 L 94 95 M 90 91 L 90 99" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
+                <!-- Certified Training Stickers -->
+                <rect x="36" y="112" width="28" height="12" rx="2" fill="#22c55e"/>
+                <text x="50" y="121" font-family="'Space Grotesk', sans-serif" font-size="5" font-weight="800" fill="#ffffff" text-anchor="middle">OSHA 10</text>
+                <rect x="116" y="112" width="30" height="12" rx="2" fill="#0284c7"/>
+                <text x="131" y="121" font-family="'Space Grotesk', sans-serif" font-size="5" font-weight="800" fill="#ffffff" text-anchor="middle">CHAINSAW</text>
+                <text x="90" y="212" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#1e293b" text-anchor="middle">OSHA Safety Hardhat</text>
+                <text x="90" y="226" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="500" fill="#64748b" text-anchor="middle">Industry Certifications Displayed</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="mockup-strategic-card">
+            <div class="msc-header">
+              <span class="msc-title">Trauma-Informed & Strengths-Based Storytelling Protocol:</span>
+              <span class="msc-badge badge-recom">Dignity-Centered Design</span>
+            </div>
+            <div class="msc-grid">
+              <div class="msc-col">
+                <div class="msc-icon">👷</div>
+                <strong>Crew Member Dignity</strong>
+                <p>Crew members are presented as skilled, certified environmental practitioners and tradespeople—not "charity cases." All uniform branding reinforces professional pride.</p>
               </div>
-              <div class="uniform-item">
-                <div class="vest-shape mill-apron">
-                  <div class="vest-chest-patch" style="background:#8c4e18;">THE MILL</div>
-                  <div class="vest-back-text">BY LANDFORCE<br><span style="font-size: 8px;">East End Urban Hardwoods</span></div>
-                </div>
-                <span>The Mill Work Apron / Shirt</span>
+              <div class="msc-col">
+                <div class="msc-icon">🦺</div>
+                <strong>Role Distinction Without Division</strong>
+                <p>Field crews wear Landforce high-vis safety gear, while Mill staff wear durable artisanal shop aprons branded "The Mill by Landforce"—unifying both divisions under one mission.</p>
               </div>
-              <div class="uniform-item">
-                <div class="hardhat-shape">
-                  <div class="helmet-sticker">LF • 2026</div>
-                </div>
-                <span>Safety Hardhat & Cert Badges</span>
+              <div class="msc-col">
+                <div class="msc-icon">📜</div>
+                <strong>Transparent Consent Protocol</strong>
+                <p>Per RFP Section 5, crew photography and video require signed release, fair honorariums, and crew review before digital publication.</p>
               </div>
             </div>
-            <p class="mockup-caption">Crew members wear the Landforce badge with dignity and pride. Mill crew wear 'The Mill by Landforce' apparel with technical certification badges earned in training.</p>
           </div>
-        `;
-      } else {
-        return `
-          <div class="mockup-uniform-canvas">
-            <div class="uniform-item">
-              <div class="vest-shape"><div class="vest-chest-patch">LANDFORCE</div></div>
-            </div>
-            <p class="mockup-caption">Single standard uniform or disconnected workwear.</p>
-          </div>
-        `;
-      }
+        </div>
+      `;
     }
   },
   lumber: {
-    title: 'Kiln Lumber Tag & Biochar Retail Packaging',
+    title: 'Kiln Lumber Lot Tag & Biochar Retail Specimen',
     render: (modelKey) => {
       return `
         <div class="mockup-lumber-canvas">
-          <div class="lumber-tag-specimen">
-            <div class="tag-header">
-              <span class="tag-brand-title">THE MILL</span>
-              <span class="tag-sub">SALVAGED URBAN TIMBER • BY LANDFORCE</span>
+          <div class="mockup-stage-badge-row">
+            <span class="ms-status-pill ms-status-recom">★ Commercial Retail Integrity & Traceability</span>
+            <span class="ms-asset-type">Asset Type: Live-Edge Urban Hardwood Slab + Kiln Inspection Tag + Retail Biochar Packaging</span>
+          </div>
+
+          <div class="lumber-vector-stage">
+            <svg viewBox="0 0 740 240" class="lumber-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Urban hardwood slab with attached inspection tag and biochar bag">
+              <defs>
+                <!-- Wood Grain Gradient -->
+                <linearGradient id="slabGrain" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#451a03"/>
+                  <stop offset="5%" stop-color="#78350f"/>
+                  <stop offset="25%" stop-color="#9a3412"/>
+                  <stop offset="45%" stop-color="#78350f"/>
+                  <stop offset="70%" stop-color="#b45309"/>
+                  <stop offset="90%" stop-color="#9a3412"/>
+                  <stop offset="100%" stop-color="#451a03"/>
+                </linearGradient>
+                <linearGradient id="tagPaper" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#fefce8"/>
+                  <stop offset="100%" stop-color="#fef08a"/>
+                </linearGradient>
+                <linearGradient id="biocharGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#27272a"/>
+                  <stop offset="100%" stop-color="#09090b"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Wood Slab Body with Live Edge Profile -->
+              <path d="M 30 50 Q 50 38 120 40 Q 240 44 380 38 Q 440 42 470 50 L 470 190 Q 420 198 320 194 Q 180 200 80 194 Q 40 196 30 190 Z" fill="url(#slabGrain)" stroke="#27140b" stroke-width="2.5"/>
+              <!-- Wood Grain Rings / Rays -->
+              <path d="M 40 65 Q 180 60 460 65 M 35 95 Q 220 88 465 95 M 40 125 Q 240 120 460 125 M 35 155 Q 200 150 465 155 M 40 180 Q 250 176 460 180" stroke="#451a03" stroke-width="1.2" opacity="0.6" fill="none"/>
+              <!-- Bark Edge Texture -->
+              <path d="M 30 50 Q 22 120 30 190" stroke="#1c0d02" stroke-width="4" fill="none"/>
+
+              <!-- Branded Mill Hot-Iron Stamp on Timber -->
+              <g transform="translate(60, 105)" opacity="0.85">
+                <circle cx="28" cy="28" r="24" fill="none" stroke="#27140b" stroke-width="2" stroke-dasharray="4,2"/>
+                <text x="28" y="24" font-family="'Space Grotesk', sans-serif" font-size="8" font-weight="900" fill="#27140b" text-anchor="middle">THE MILL</text>
+                <text x="28" y="34" font-family="'Plus Jakarta Sans', sans-serif" font-size="5.5" font-weight="800" fill="#27140b" text-anchor="middle">BY LANDFORCE</text>
+                <text x="28" y="42" font-family="'Space Grotesk', sans-serif" font-size="5" font-weight="700" fill="#27140b" text-anchor="middle">PGH URBAN SALVAGE</text>
+              </g>
+
+              <!-- Fastening Wire & Eyelet -->
+              <line x1="310" y1="52" x2="330" y2="78" stroke="#ca8a04" stroke-width="2"/>
+              <circle cx="310" cy="52" r="3" fill="#ca8a04"/>
+
+              <!-- Attached Inspection Certificate Tag -->
+              <g transform="translate(170, 68)">
+                <polygon points="160,0 270,0 270,140 120,140 120,40" fill="url(#tagPaper)" stroke="#ca8a04" stroke-width="1.5" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.3))"/>
+                <circle cx="138" cy="20" r="4.5" fill="#ca8a04"/>
+                <circle cx="138" cy="20" r="2.5" fill="#fef08a"/>
+
+                <!-- Tag Header -->
+                <text x="195" y="20" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="900" fill="#713f12" text-anchor="middle" letter-spacing="1">THE MILL</text>
+                <text x="195" y="28" font-family="'Plus Jakarta Sans', sans-serif" font-size="5.5" font-weight="800" fill="#a16207" text-anchor="middle">BY LANDFORCE • SALVAGED TIMBER</text>
+                <line x1="128" y1="33" x2="262" y2="33" stroke="#ca8a04" stroke-width="1"/>
+
+                <!-- Tag Specs -->
+                <text x="128" y="45" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="700" fill="#713f12">SPECIES: <tspan font-weight="800" fill="#451a03">White Oak (Quarter-Sawn)</tspan></text>
+                <text x="128" y="57" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="700" fill="#713f12">ORIGIN: <tspan font-weight="800" fill="#451a03">Frick Park Storm Salvage</tspan></text>
+                <text x="128" y="69" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="700" fill="#713f12">MOISTURE: <tspan font-weight="800" fill="#15803d">7.2% Vacuum Kiln Dried</tspan></text>
+                <text x="128" y="81" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="700" fill="#713f12">DIMENSIONS: <tspan font-weight="800" fill="#451a03">8/4 (2") × 18" × 8 Ft (24 BF)</tspan></text>
+                <text x="128" y="93" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="700" fill="#713f12">CARBON: <tspan font-weight="800" fill="#15803d">🌱 34.8 kg CO₂e Sequestered</tspan></text>
+
+                <!-- Barcode & QR Stamp -->
+                <rect x="128" y="100" width="80" height="18" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.8"/>
+                <text x="168" y="112" font-family="'Space Grotesk', monospace" font-size="6" font-weight="800" fill="#1e293b" text-anchor="middle" letter-spacing="1">||| | |||| || ||| LF-883</text>
+                <!-- QR Code Block -->
+                <rect x="220" y="98" width="22" height="22" fill="#ffffff" stroke="#ca8a04" stroke-width="1"/>
+                <rect x="223" y="101" width="6" height="6" fill="#1e293b"/>
+                <rect x="233" y="101" width="6" height="6" fill="#1e293b"/>
+                <rect x="223" y="111" width="6" height="6" fill="#1e293b"/>
+                <rect x="231" y="109" width="3" height="3" fill="#1e293b"/>
+                <text x="195" y="132" font-family="'Plus Jakarta Sans', sans-serif" font-size="5" font-weight="700" fill="#854d0e" text-anchor="middle">Scan QR for Live Board-Foot Inventory</text>
+              </g>
+
+              <!-- Biochar Bag Specimen Alongside -->
+              <g transform="translate(520, 35)">
+                <path d="M 20 20 L 160 20 L 175 180 Q 175 190 165 190 L 15 190 Q 5 190 5 180 Z" fill="url(#biocharGrad)" stroke="#3f3f46" stroke-width="1.5"/>
+                <!-- Sealed Top Fold -->
+                <polygon points="15,20 165,20 170,10 10,10" fill="#52525b" stroke="#71717a" stroke-width="1"/>
+                <!-- Green Accent Ribbon -->
+                <rect x="10" y="32" width="155" height="12" fill="#4ade80"/>
+                <text x="87" y="41" font-family="'Space Grotesk', sans-serif" font-size="7" font-weight="900" fill="#064e3b" text-anchor="middle">100% REGENERATIVE URBAN BIOMASS</text>
+                <!-- Biochar Branding -->
+                <text x="87" y="75" font-family="'Space Grotesk', sans-serif" font-size="18" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">BIOCHAR PRO</text>
+                <text x="87" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#a1a1aa" text-anchor="middle">Horticultural Soil Amendment</text>
+                <!-- Mill Seal -->
+                <circle cx="87" cy="120" r="18" fill="#18181b" stroke="#4ade80" stroke-width="1"/>
+                <text x="87" y="118" font-family="'Space Grotesk', sans-serif" font-size="6" font-weight="800" fill="#4ade80" text-anchor="middle">THE MILL</text>
+                <text x="87" y="126" font-family="'Plus Jakarta Sans', sans-serif" font-size="5" font-weight="700" fill="#ffffff" text-anchor="middle">BY LANDFORCE</text>
+                <text x="87" y="160" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="600" fill="#d4d4d8" text-anchor="middle">Made in Pittsburgh, PA</text>
+                <text x="87" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="6" font-weight="500" fill="#a1a1aa" text-anchor="middle">Net Wt. 20 Lbs • Carbon Negative</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="mockup-strategic-card">
+            <div class="msc-header">
+              <span class="msc-title">Commercial Credibility for Custom Woodworkers & Architects:</span>
+              <span class="msc-badge badge-recom">B2B Commercial Bridge</span>
             </div>
-            <div class="tag-body">
-              <div class="tag-field"><span>SPECIES:</span> <strong>Quarter-Sawn White Oak</strong></div>
-              <div class="tag-field"><span>ORIGIN:</span> <strong>Frick Park Salvage (Pittsburgh)</strong></div>
-              <div class="tag-field"><span>MOISTURE:</span> <strong>7.2% Vacuum Kiln Dried</strong></div>
-              <div class="tag-field"><span>SEQUESTERED:</span> <strong>34.8 kg CO₂e Retained</strong></div>
-              <div class="tag-barcode">||| | |||| || ||| ||||| LF-2026-883</div>
+            <div class="msc-grid">
+              <div class="msc-col">
+                <div class="msc-icon">📊</div>
+                <strong>Technical Specifications First</strong>
+                <p>Makers and contractors require precise moisture readings (&lt;8%) and species certification before purchasing. The Mill branding conveys commercial precision, not hobbyist charity.</p>
+              </div>
+              <div class="msc-col">
+                <div class="msc-icon">🌱</div>
+                <strong>Carbon Story as Premium Value</strong>
+                <p>Every slab tracks carbon sequestered (e.g. 34.8 kg CO₂e) and Pittsburgh park salvage provenance, commanding higher margins from sustainability-minded clients.</p>
+              </div>
+              <div class="msc-col">
+                <div class="msc-icon">📱</div>
+                <strong>Digital-to-Physical QR Integration</strong>
+                <p>Contractors scan the slab's physical tag to view live stock on landforcepgh.org/the-mill, check thickness options, and submit a 30-second quote or hold request.</p>
+              </div>
             </div>
           </div>
-          <div class="biochar-bag-specimen">
-            <div class="bag-header">
-              <span>BIOCHAR PRO</span>
-              <small>Horticultural Soil Conditioner</small>
-            </div>
-            <p>100% Regenerative Urban Biomass. Made in Pittsburgh at The Mill by Landforce.</p>
-          </div>
-          <p class="mockup-caption"><strong>Commercial Integrity:</strong> High-end woodworkers and landscape architects receive rigorous technical specs (moisture %, species, board-feet) alongside the inspiring provenance story of Pittsburgh urban salvage.</p>
         </div>
       `;
     }
   },
   signage: {
-    title: 'The Mill Facility Exterior & Wayfinding Signage',
+    title: 'The Mill Facility Exterior & Wayfinding Monument Signage',
     render: (modelKey) => {
       return `
         <div class="mockup-signage-canvas">
-          <div class="mill-exterior-sign">
-            <div class="sign-wood-slab">
-              <div class="sign-cutout">
-                <h2>THE MILL</h2>
-                <h3>URBAN WOOD RECOVERY & KILN DRIED LUMBER</h3>
-                <div class="sign-endorse">A Social Enterprise of LANDFORCE</div>
+          <div class="mockup-stage-badge-row">
+            <span class="ms-status-pill ms-status-recom">★ East End Physical Facility Presence</span>
+            <span class="ms-asset-type">Asset Type: Heavy-Timber Monument Sign with Steel I-Beam Ground Anchors</span>
+          </div>
+
+          <div class="signage-vector-stage">
+            <svg viewBox="0 0 740 230" class="signage-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architectural facility monument sign for The Mill by Landforce">
+              <defs>
+                <linearGradient id="beamSteel" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#18181b"/>
+                  <stop offset="50%" stop-color="#3f3f46"/>
+                  <stop offset="100%" stop-color="#18181b"/>
+                </linearGradient>
+                <linearGradient id="signWood" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#3d1f0e"/>
+                  <stop offset="100%" stop-color="#1f0f07"/>
+                </linearGradient>
+                <linearGradient id="bronzeLetter" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#fef08a"/>
+                  <stop offset="50%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#b45309"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Concrete Ground Foundation / Landscaped Bed -->
+              <rect x="80" y="200" width="580" height="24" rx="4" fill="#94a3b8" stroke="#64748b" stroke-width="1.5"/>
+              <ellipse cx="370" cy="208" rx="280" ry="6" fill="#475569" opacity="0.4"/>
+              <!-- River Rock / Mulch Accents -->
+              <circle cx="120" cy="208" r="4" fill="#64748b"/>
+              <circle cx="140" cy="210" r="5" fill="#475569"/>
+              <circle cx="610" cy="209" r="4.5" fill="#64748b"/>
+              <circle cx="630" cy="211" r="5" fill="#475569"/>
+
+              <!-- Left Steel I-Beam Post -->
+              <rect x="130" y="20" width="30" height="185" fill="url(#beamSteel)" stroke="#09090b" stroke-width="1.5"/>
+              <circle cx="145" cy="40" r="3" fill="#71717a"/>
+              <circle cx="145" cy="180" r="3" fill="#71717a"/>
+
+              <!-- Right Steel I-Beam Post -->
+              <rect x="580" y="20" width="30" height="185" fill="url(#beamSteel)" stroke="#09090b" stroke-width="1.5"/>
+              <circle cx="595" cy="40" r="3" fill="#71717a"/>
+              <circle cx="595" cy="180" r="3" fill="#71717a"/>
+
+              <!-- Heavy Timber Live-Edge Signboard -->
+              <path d="M 120 40 Q 370 34 620 40 L 620 170 Q 370 176 120 170 Z" fill="url(#signWood)" stroke="#1a0802" stroke-width="3" filter="drop-shadow(0 8px 16px rgba(0,0,0,0.35))"/>
+              <!-- Timber End-Grains & Texture -->
+              <line x1="120" y1="40" x2="120" y2="170" stroke="#000000" stroke-width="4"/>
+              <line x1="620" y1="40" x2="620" y2="170" stroke="#000000" stroke-width="4"/>
+              <path d="M 135 60 Q 370 54 605 60 M 135 150 Q 370 156 605 150" stroke="#542c13" stroke-width="1" opacity="0.4" fill="none"/>
+
+              <!-- Dimensional Lettering: THE MILL -->
+              <g transform="translate(370, 84)">
+                <!-- Drop shadow for dimensional effect -->
+                <text x="2" y="2" font-family="'Space Grotesk', sans-serif" font-size="34" font-weight="900" fill="#000000" text-anchor="middle" letter-spacing="4" opacity="0.6">THE MILL</text>
+                <text x="0" y="0" font-family="'Space Grotesk', sans-serif" font-size="34" font-weight="900" fill="url(#bronzeLetter)" text-anchor="middle" letter-spacing="4">THE MILL</text>
+              </g>
+
+              <!-- Subtitle: Urban Wood Recovery -->
+              <text x="370" y="106" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#fde68a" text-anchor="middle" letter-spacing="2">URBAN WOOD RECOVERY & KILN DRIED HARDWOODS</text>
+              
+              <!-- Endorsement Sub-Plaque -->
+              <rect x="230" y="120" width="280" height="24" rx="12" fill="#163024" stroke="#4ade80" stroke-width="1.2"/>
+              <g transform="translate(245, 126)">
+                <path d="M 6 8 Q 9 2 15 2 Q 17 8 12 12 Q 8 15 6 8 Z" fill="#4ade80"/>
+                <text x="22" y="9" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" fill="#ffffff">A SOCIAL ENTERPRISE OF </text>
+                <text x="148" y="9" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="900" fill="#86efac" letter-spacing="1">LANDFORCE</text>
+              </g>
+
+              <!-- Facility Address -->
+              <text x="370" y="160" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="#fed7aa" text-anchor="middle">East End Pittsburgh • 10,000 Sq. Ft. Processing & Retail Yard</text>
+            </svg>
+          </div>
+
+          <div class="mockup-strategic-card">
+            <div class="msc-header">
+              <span class="msc-title">Physical Facility Wayfinding & Community Presence:</span>
+              <span class="msc-badge badge-recom">Retail Destination</span>
+            </div>
+            <div class="msc-grid">
+              <div class="msc-col">
+                <div class="msc-icon">🏢</div>
+                <strong>Inviting Commercial Footprint</strong>
+                <p>Prominent industrial architectural monument signage establishes The Mill as a premier destination for woodworkers, makers, and architects seeking salvaged urban timber in Pittsburgh's East End.</p>
+              </div>
+              <div class="msc-col">
+                <div class="msc-icon">🤝</div>
+                <strong>Uncompromising Endorsement</strong>
+                <p>The "A Social Enterprise of Landforce" badge anchors the facility in Landforce's 501(c)(3) mission, reinforcing workforce training and environmental stewardship to every customer.</p>
+              </div>
+              <div class="msc-col">
+                <div class="msc-icon">📍</div>
+                <strong>Civic Community Pride</strong>
+                <p>The facility stands as a tangible civic symbol of Pittsburgh's circular economy: transforming fallen city storm trees into valuable local lumber while employing regional workers.</p>
               </div>
             </div>
           </div>
-          <p class="mockup-caption">East End 10,000 sq. ft. Facility Signage: Prominent industrial architectural lettering on reclaimed timber substrate, visibly anchored by the Landforce endorsement mark.</p>
         </div>
       `;
     }
@@ -875,10 +1322,119 @@ function initBudgetCalculator() {
    8. PRINT & EXPORT BUTTON
    -------------------------------------------------------------------------- */
 function initPrintButton() {
-  const btnPrint = document.getElementById('btnPrint');
-  if (btnPrint) {
-    btnPrint.addEventListener('click', () => {
-      window.print();
+  // Retain print capability for footer button if needed
+}
+
+/* --------------------------------------------------------------------------
+   9. HERO ATTACHED PDF VIEWER (Direct In-Page Landforce RFP Overview)
+   -------------------------------------------------------------------------- */
+function initHeroPdfViewer() {
+  const frame = document.getElementById('heroPdfFrame');
+  const pillsTrack = document.getElementById('heroPdfQuickPills');
+  const expandBtn = document.getElementById('btnHeroPdfExpand');
+
+  // Modal elements
+  const modal = document.getElementById('heroPdfModal');
+  const modalBackdrop = document.getElementById('heroPdfModalBackdrop');
+  const modalCloseBtn = document.getElementById('btnHeroPdfModalClose');
+  const modalFrame = document.getElementById('heroPdfModalFrame');
+  const modalTitle = document.getElementById('modalDocTitle');
+  const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+
+  if (!frame) return;
+
+  const RFP_DOC = {
+    file: 'Landforce_RFP_Official_Document.pdf',
+    title: 'Landforce Official RFP (13 Pages)',
+    pills: [
+      { page: 1, label: 'Pg 1: Summary' },
+      { page: 2, label: 'Pg 2: Challenge' },
+      { page: 4, label: 'Pg 4: Audiences' },
+      { page: 5, label: 'Pg 5: Scope' },
+      { page: 9, label: 'Pg 9: Budget' },
+      { page: 11, label: 'Pg 11: Criteria' },
+      { page: 13, label: 'Pg 13: Pricing Form' }
+    ]
+  };
+
+  function jumpToPage(page) {
+    const cleanUrl = `${RFP_DOC.file}#page=${page}&view=FitH&toolbar=1`;
+    frame.src = cleanUrl;
+
+    if (modal && modal.classList.contains('open') && modalFrame) {
+      modalFrame.src = cleanUrl;
+    }
+  }
+
+  function renderPills() {
+    if (!pillsTrack) return;
+    pillsTrack.innerHTML = '';
+    RFP_DOC.pills.forEach((p, idx) => {
+      const btn = document.createElement('button');
+      btn.className = `pdf-quick-btn ${idx === 0 ? 'active' : ''}`;
+      btn.textContent = p.label;
+      btn.dataset.page = p.page;
+      btn.addEventListener('click', () => {
+        pillsTrack.querySelectorAll('.pdf-quick-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        jumpToPage(p.page);
+      });
+      pillsTrack.appendChild(btn);
     });
   }
+
+  // Fullscreen Modal Open
+  expandBtn?.addEventListener('click', () => {
+    if (!modal) return;
+    if (modalTitle) modalTitle.textContent = `${RFP_DOC.title} — In-Page Fullscreen Overview`;
+    if (modalDownloadBtn) {
+      modalDownloadBtn.href = RFP_DOC.file;
+      modalDownloadBtn.download = RFP_DOC.file;
+    }
+    if (modalFrame) {
+      modalFrame.src = frame.src || `${RFP_DOC.file}#page=1&view=FitH&toolbar=1`;
+    }
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  modalCloseBtn?.addEventListener('click', closeModal);
+  modalBackdrop?.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('open')) {
+      closeModal();
+    }
+  });
+
+  // Top navigation PDF button (#btnPrint) smooth-scrolls directly to this inline PDF viewer
+  const btnPrint = document.getElementById('btnPrint');
+  if (btnPrint) {
+    btnPrint.addEventListener('click', (e) => {
+      e.preventDefault();
+      const widget = document.getElementById('heroPdfWidget');
+      if (widget) {
+        widget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        widget.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+        widget.style.transform = 'scale(1.02)';
+        widget.style.boxShadow = '0 0 45px rgba(74, 222, 128, 0.45)';
+        setTimeout(() => {
+          widget.style.transform = '';
+          widget.style.boxShadow = '';
+        }, 1200);
+      }
+    });
+  }
+
+  // Initialize pills for Landforce RFP document
+  renderPills();
 }
+

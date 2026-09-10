@@ -13,6 +13,7 @@ const MIME_TYPES = {
   '.jpg': 'image/jpeg',
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
+  '.pdf': 'application/pdf',
   '.woff2': 'font/woff2',
   '.woff': 'font/woff',
   '.ttf': 'font/ttf'
@@ -36,10 +37,23 @@ const server = http.createServer((req, res) => {
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
-    res.writeHead(200, {
+    const headers = {
       'Content-Type': contentType,
+      'Content-Length': stats.size,
+      'Accept-Ranges': 'bytes',
       'Cache-Control': 'no-cache'
-    });
+    };
+
+    if (ext === '.pdf') {
+      headers['Content-Disposition'] = 'inline; filename="' + path.basename(filePath) + '"';
+    }
+
+    res.writeHead(200, headers);
+
+    if (req.method === 'HEAD') {
+      res.end();
+      return;
+    }
 
     fs.createReadStream(filePath).pipe(res);
   });
