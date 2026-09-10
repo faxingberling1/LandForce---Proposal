@@ -1345,9 +1345,11 @@ strong {
 /* Challenges Grid */
 .challenge-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
-  margin: 2rem 0;
+  margin: 2rem auto;
+  max-width: 1060px;
+  justify-content: center;
 }
 
 .challenge-card {
@@ -1357,6 +1359,8 @@ strong {
   padding: 1.65rem;
   position: relative;
   transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
 }
 
 .challenge-card:hover {
@@ -1392,6 +1396,7 @@ strong {
   border-left: 3px solid var(--sprout-vibrant);
   border-radius: var(--radius-sm);
   color: var(--slate-800);
+  margin-top: auto;
 }
 
 /* Tables */
@@ -2353,26 +2358,74 @@ strong {
   overflow-x: auto;
 }
 
+.gantt-header-row {
+  display: grid;
+  grid-template-columns: 240px 1fr 145px;
+  align-items: center;
+  gap: 1.25rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--slate-200);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--slate-500);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  min-width: 800px;
+}
+
+.gantt-month-grid {
+  display: flex;
+  width: 100%;
+}
+
+.gantt-month-grid span {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate-600);
+  border-left: 1px dashed var(--slate-200);
+  padding: 0 0.25rem;
+}
+
+.gantt-month-grid span:first-child {
+  border-left: none;
+}
+
 .gantt-row {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 240px 1fr 145px;
   align-items: center;
-  padding: 0.85rem 0;
+  gap: 1.25rem;
+  padding: 0.7rem 0;
   border-bottom: 1px solid var(--slate-100);
+  min-width: 800px;
+  transition: background 0.15s ease;
+}
+
+.gantt-row:hover {
+  background: var(--slate-50);
+}
+
+.gantt-row.row-milestone {
+  background: #fffdf5;
+  border-bottom: 1px solid #fef3c7;
 }
 
 .gantt-task-name {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--slate-800);
+  line-height: 1.35;
 }
 
 .gantt-bar-track {
-  height: 24px;
+  height: 26px;
   background: var(--slate-100);
   border-radius: var(--radius-full);
   position: relative;
   overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .gantt-bar-fill {
@@ -2380,17 +2433,64 @@ strong {
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
-  padding: 0 0.75rem;
+  padding: 0 0.65rem;
   color: #ffffff;
   font-size: 0.7rem;
   font-weight: 700;
   font-family: var(--font-mono);
   white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: width 0.3s ease, margin-left 0.3s ease;
+}
+
+.gantt-bar-fill.milestone-bar {
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.2);
 }
 
 .gantt-brand { background: linear-gradient(90deg, #1f4734, #2e694d); }
 .gantt-web { background: linear-gradient(90deg, #c87a32, #db8c46); }
-.gantt-launch { background: linear-gradient(90deg, #489b4f, #22c55e); }
+.gantt-launch { background: linear-gradient(90deg, #16a34a, #22c55e); }
+.gantt-milestone { background: linear-gradient(90deg, #b91c1c, #dc2626); }
+
+.gantt-date-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-align: center;
+  white-space: nowrap;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: var(--slate-100);
+  color: var(--slate-700);
+  border: 1px solid var(--slate-200);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.gantt-date-badge.badge-brand {
+  background: #f0fdf4;
+  color: #166534;
+  border-color: #bbf7d0;
+}
+
+.gantt-date-badge.badge-web {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+.gantt-date-badge.badge-launch {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #a7f3d0;
+}
+
+.gantt-date-badge.badge-milestone {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fecaca;
+  font-weight: 800;
+}
 
 .staff-allocation-box {
   background: var(--slate-50);

@@ -1036,7 +1036,7 @@ const ganttTasks = [
   { name: 'Brand Architecture & Naming Formulation', phase: 'brand', start: 5, end: 8, label: 'Weeks 5–8 (Dec)' },
   { name: 'Visual Identity System & Brand Guidelines', phase: 'brand', start: 7, end: 10, label: 'Weeks 7–10' },
   { name: 'Priority Physical Collateral (12 Pieces)', phase: 'brand', start: 9, end: 13, label: 'Weeks 9–13 (Jan)' },
-  { name: 'Milestone Gate 1: Brand Architecture Approval', phase: 'brand', start: 13, end: 13, label: 'TARGET: Jan 31' },
+  { name: 'Milestone Gate 1: Brand Architecture Approval', phase: 'milestone', start: 13, end: 13, label: 'TARGET: Jan 31', isMilestone: true },
   
   { name: 'Website Information Architecture & Wireframes', phase: 'web', start: 12, end: 15, label: 'Weeks 12–15' },
   { name: 'Directed Photography Sessions (3 Days)', phase: 'web', start: 13, end: 16, label: 'Weeks 13–16' },
@@ -1045,7 +1045,7 @@ const ganttTasks = [
   { name: 'Salesforce, Mailchimp & Inventory Integrations', phase: 'web', start: 17, end: 20, label: 'Weeks 17–20' },
   { name: 'WCAG 2.2 AA Accessibility & Cross-Device QA', phase: 'web', start: 19, end: 21, label: 'Weeks 19–21' },
   { name: 'Staff Training & Knowledgebase Delivery', phase: 'web', start: 20, end: 22, label: 'Weeks 20–22 (Mar)' },
-  { name: 'Public Website Launch & DNS Cutover', phase: 'launch', start: 22, end: 22, label: 'TARGET: Mar 31' },
+  { name: 'Public Website Launch & DNS Cutover', phase: 'milestone', start: 22, end: 22, label: 'TARGET: Mar 31', isMilestone: true },
   { name: '60-Day Post-Launch Warranty Support', phase: 'launch', start: 22, end: 30, label: 'Through May 31' }
 ];
 
@@ -1059,29 +1059,63 @@ function initGanttChart() {
   function renderGantt() {
     const filtered = ganttTasks.filter(task => {
       if (currentFilter === 'all') return true;
-      if (currentFilter === 'brand') return task.phase === 'brand';
-      if (currentFilter === 'web') return task.phase === 'web' || task.phase === 'launch';
+      if (currentFilter === 'brand') return task.phase === 'brand' || (task.isMilestone && task.start <= 13);
+      if (currentFilter === 'web') return task.phase === 'web' || task.phase === 'launch' || (task.isMilestone && task.start > 13);
       return true;
     });
 
-    const totalWeeks = 22;
+    const totalWeeks = 30;
 
-    container.innerHTML = filtered.map(t => {
+    const headerHtml = `
+      <div class="gantt-header-row">
+        <div class="gantt-header-col-name">Deliverable / Workstream</div>
+        <div class="gantt-header-col-track">
+          <div class="gantt-month-grid">
+            <span style="width: 13.33%">Nov '26</span>
+            <span style="width: 13.33%">Dec '26</span>
+            <span style="width: 16.67%">Jan '27</span>
+            <span style="width: 13.33%">Feb '27</span>
+            <span style="width: 16.67%">Mar '27</span>
+            <span style="width: 26.67%">Apr – May '27</span>
+          </div>
+        </div>
+        <div class="gantt-header-col-date">Scheduled Timing</div>
+      </div>
+    `;
+
+    const rowsHtml = filtered.map(t => {
       const leftPct = ((t.start - 1) / totalWeeks) * 100;
-      const widthPct = Math.max(((t.end - t.start + 1) / totalWeeks) * 100, 4.5);
-      const barClass = t.phase === 'brand' ? 'gantt-brand' : t.phase === 'web' ? 'gantt-web' : 'gantt-launch';
+      const widthPct = Math.max(((t.end - t.start + 1) / totalWeeks) * 100, t.isMilestone ? 2.5 : 4.5);
+      
+      let barClass = 'gantt-brand';
+      let badgeClass = 'badge-brand';
+      if (t.isMilestone) {
+        barClass = 'gantt-milestone milestone-bar';
+        badgeClass = 'badge-milestone';
+      } else if (t.phase === 'web') {
+        barClass = 'gantt-web';
+        badgeClass = 'badge-web';
+      } else if (t.phase === 'launch') {
+        barClass = 'gantt-launch';
+        badgeClass = 'badge-launch';
+      }
 
       return `
-        <div class="gantt-row">
+        <div class="gantt-row ${t.isMilestone ? 'row-milestone' : ''}">
           <div class="gantt-task-name">${t.name}</div>
           <div class="gantt-bar-track">
-            <div class="gantt-bar-fill ${barClass}" style="margin-left: ${leftPct}%; width: ${widthPct}%;">
-              ${t.label}
+            <div class="gantt-bar-fill ${barClass}" style="margin-left: ${leftPct}%; width: ${widthPct}%;" title="${t.name}: ${t.label}">
+              ${widthPct >= 13 ? `<span class="gantt-bar-inner-label">${t.label}</span>` : ''}
             </div>
+          </div>
+          <div class="gantt-date-badge ${badgeClass}">
+            ${t.label}
           </div>
         </div>
       `;
     }).join('');
+
+    container.innerHTML = headerHtml + rowsHtml;
   }
 
   filterBtns.forEach(btn => {
